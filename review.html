@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - TIM TRUCK Parts and Repairs</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-darker: #080808;
+            --card-dark: #1e1e1e;
+            --card-gray: #2d2d2d;
+            --accent-gold: #FFB800; 
+            --accent-orange: #E65C00; 
+            --text-light: #f8f9fa;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .text-gold { color: var(--accent-gold) !important; }
+        .text-orange { color: var(--accent-orange) !important; }
+        .text-gray { color: var(--text-gray) !important; }
+        .bg-gray { background-color: var(--card-gray) !important; }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--bg-darker);
+            font-size: 0.85rem;
+            border-bottom: 1px solid #222;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-orange);
+        }
+        .nav-pills .nav-link {
+            color: #ccc;
+            border-radius: 20px;
+            padding: 6px 18px;
+            margin: 0 3px;
+            transition: 0.3s;
+        }
+        .nav-pills .nav-link:hover { color: var(--accent-gold); }
+        .nav-pills .nav-link.active {
+            background-color: var(--accent-orange);
+            color: #fff;
+        }
+        .btn-call-header {
+            background-color: var(--accent-orange);
+            color: white;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .btn-call-header:hover { background-color: #cc5200; color: white; }
+
+        /* Hero Reviews */
+        .reviews-hero {
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.817) 0%, rgba(18, 18, 18, 0.617) 90%),
+                url(madia/cha2.png);
+            padding: 80px 0;
+            border-bottom: 1px solid #333;
+        }
+        .subtitle-hero {
+            color: var(--accent-orange);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        /* Review Cards */
+        .review-card {
+            background-color: var(--card-dark);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        /* Navigation Arrows */
+        .btn-nav-circle {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--card-gray);
+            color: white;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .btn-nav-circle:hover {
+            background-color: var(--accent-orange);
+        }
+
+        /* Main Red Action Button */
+        .btn-primary-custom {
+            background-color: var(--accent-orange);
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 12px 30px;
+            border: none;
+            transition: 0.3s;
+        }
+        .btn-primary-custom:hover {
+            background-color: #cc5200;
+            color: white;
+        }
+
+        .btn-outline-light-custom {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 8px 20px;
+        }
+        .btn-outline-light-custom:hover {
+            background: white;
+            color: var(--accent-orange);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-darker);
+            border-top: 1px solid #333;
+        }
+        .floating-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .btn-whatsapp { background-color: #1ebe5d; color: white; }
+        .btn-whatsapp:hover { background-color: #1ebe5d; color: white; }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Top Bar -->
+    <div class="top-bar py-2 d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center text-gray">
+            <div class="fw-bold text-light">Text or Call: (865) 685-5944</div>
+            <div class="d-flex gap-4">
+                <span><i class="fa-solid fa-truck me-2"></i> Ships Nationwide</span>
+                <span><i class="fa-solid fa-location-dot me-2"></i> Oak Ridge, TN</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <div class="container">
+            <a class="navbar-brand py-0" href="index.html">
+                <img src="IMG-20260907-WA0017_2.jpeg" alt="Tim Truck Parts and Repairs Logo" style="max-height: 60px; border-radius: 4px;">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="nav nav-pills my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <a href="tel:+18656855944" class="btn btn-call-header px-4 py-2 d-none d-lg-inline-block">
+                <i class="fa-solid fa-phone me-2"></i>(865) 685-5944
+            </a>
+            
+        </div>
+    </nav>
+
+    <!-- 3. Hero Reviews Section -->
+    <section class="reviews-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="subtitle-hero mb-2">TIM TRUCK PARTS • OAK RIDGE, TN</div>
+                    <h1 class="hero-title">What Our Customers Say</h1>
+                    <p class="lead text-gray mb-4" style="max-width: 600px;">
+                        Truck owners across all 50 states — here is what they tell us.
+                    </p>
+                    <a href="tel:+18656855944" class="btn btn-call-header px-4 py-3 fs-5">
+                        <i class="fa-solid fa-phone me-2"></i> Call (865) 685-5944
+                    </a>
+                    <a href="https://wa.me/18656855944" target="_blank" class="btn btn-action-custom btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Reviews Grid Section -->
+    <section class="py-5" style="background-color: var(--bg-dark);">
+        <div class="container py-4 text-center">
+            <div class="subtitle-hero mb-2">REVIEWS</div>
+            <h2 class="display-4 fw-black text-white text-uppercase mb-3">What Our Customers Say</h2>
+            
+            <!-- Rating Star Box -->
+            <div class="d-flex justify-content-center text-orange fs-4 mb-2 gap-1">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-gray fw-semibold mb-5">
+                <strong class="text-white">4.9 / 5</strong> · 673 reviews from truck owners across all 50 states
+            </p>
+
+            <!-- Cards Row -->
+            <div class="row g-4 mb-5 text-start">
+                <!-- Review 1 -->
+                <div class="col-12 col-md-4">
+                    <div class="review-card">
+                        <div>
+                            <div class="text-orange mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">
+                                “Best place for truck parts. Ordered a repair for my GMC Sierra 2500HD and it arrived in Bakersfield, CA quicker than I expected.”
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold text-white mb-1">Carlos Bell</h3>
+                            <small class="text-gray">GMC Sierra 2500HD · Bakersfield, CA</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="col-12 col-md-4">
+                    <div class="review-card">
+                        <div>
+                            <div class="text-orange mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">
+                                “Quality fender for my Nissan Titan at a price that actually made sense. Talked to a real person who knew exactly what I needed.”
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold text-white mb-1">Dwayne Bell</h3>
+                            <small class="text-gray">Nissan Titan · Wichita, KS</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="col-12 col-md-4">
+                    <div class="review-card">
+                        <div>
+                            <div class="text-orange mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">
+                                “Shipping to Columbus, OH was quick and the truck bed for my GMC Canyon was exactly as described. Will buy from Tim again.”
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold text-white mb-1">Tasha Bell</h3>
+                            <small class="text-gray">GMC Canyon · Columbus, OH</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carousel Arrows -->
+            <div class="d-flex justify-content-center gap-3 mb-5">
+                <button class="btn-nav-circle" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="btn-nav-circle" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+
+            <!-- See All Button -->
+            <div>
+                <a href="reviews-all.html" class="btn btn-primary-custom fs-5">See All 309 Reviews</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Footer (Identical to Services Page) -->
+    <footer class="py-5">
+        <div class="container border-bottom border-dark pb-4 mb-4">
+            <div class="row g-4">
+                <!-- Brand Info -->
+                <div class="col-lg-3">
+                    <img src="IMG-20260907-WA0017_2.jpeg" alt="Tim Truck Parts and Repairs Logo" style="max-height: 80px; border-radius: 4px;" class="mb-3">
+                    <p class="text-gray small mt-3">
+                        Quality truck beds, tailgates, toppers, and repairs — based in Oak Ridge, TN, shipping nationwide since 2015.
+                    </p>
+                </div>
+                
+                <!-- Explore Links -->
+                <div class="col-lg-3">
+                    <h5 class="text-white fw-bold mb-4">Explore</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                        <li><a href="service.html" class="text-decoration-none text-gray">Services</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-gray">Gallery</a></li>
+                        <li><a href="#" class="text-decoration-none text-gray">Reviews</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-gray">About</a></li>
+                        <li><a href="faq.html" class="text-decoration-none text-gray">FaQ</a></li>
+                        <li><a href="contact.html" class="text-decoration-none text-gray">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="col-lg-3">
+                    <h5 class="text-white fw-bold mb-4">Contact</h5>
+                    <ul class="list-unstyled text-gray mb-0">
+                        <li class="mb-3 d-flex gap-2">
+                            <i class="fa-solid fa-phone mt-1"></i> <a href="tel:(865) 685-5944" style="color: white; text-decoration: none;">(865) 685-5944</a>
+                        </li>
+                        <li class="mb-3 d-flex gap-2">
+                            <i class="fa-solid fa-envelope mt-1"></i> <a href="mailto:Timtruckpartsandrepairs@gmail.com" style="color: white; text-decoration: none">Timtruckpartsandrepairs@gmail.com</a>
+                        </li>
+                        <li class="d-flex gap-2">
+                            <i class="fa-solid fa-location-dot mt-1"></i> 105 Warehouse Rd, Oak Ridge, TN 37830
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Text Widget CTA -->
+                <div class="col-lg-3">
+                    <h5 class="text-white fw-bold mb-4">Have a question? Text us!</h5>
+                    <a href="sms:+18656855944" class="btn btn-outline-light-custom px-4 py-2">
+                        <i class="fa-regular fa-comment-dots me-2"></i> Start a Text
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container text-center">
+            <p class="text-gray small mb-0 fw-bold">Taxes & Fees: <span class="fw-normal">Taxes and fees are not included in the initial pricing agreed for the parts and shipping cost. This amount varies depending on the amount agreed for the parts & shipping, and is calculated by the cashier only.</span></p>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Button -->
+    <a href="tel:+18656855944" class="floating-chat" aria-label="Call Us">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - TIM TRUCK Parts and Repairs</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Charte colorielle : Noir, Gris, Jaune Or, Orange */
+            --bg-dark: #121212;
+            --bg-darker: #080808;
+            --card-dark: #1e1e1e;
+            --card-gray: #2d2d2d;
+            --accent-gold: #FFB800; 
+            --accent-orange: #E65C00; 
+            --text-light: #f8f9fa;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Utilitaires couleurs */
+        .text-gold { color: var(--accent-gold) !important; }
+        .text-orange { color: var(--accent-orange) !important; }
+        .text-gray { color: var(--text-gray) !important; }
+        .bg-gray { background-color: var(--card-gray) !important; }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--bg-darker);
+            font-size: 0.85rem;
+            border-bottom: 1px solid #222;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-orange);
+        }
+        .nav-pills .nav-link {
+            color: #ccc;
+            border-radius: 20px;
+            padding: 6px 18px;
+            margin: 0 3px;
+            transition: 0.3s;
+        }
+        .nav-pills .nav-link:hover { color: var(--accent-gold); }
+        .nav-pills .nav-link.active {
+            background-color: var(--accent-orange);
+            color: #fff;
+        }
+        .btn-call-header {
+            background-color: var(--accent-orange);
+            color: white;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .btn-call-header:hover { background-color: #cc5200; color: white; }
+
+        /* Hero Services */
+        .services-hero {
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.222) 0%, rgba(18, 18, 18, 0.617) 90%),
+                url(madia/meta1.jpg);
+            padding: 80px 0;
+            border-bottom: 1px solid #333;
+        }
+        .subtitle-hero {
+            color: var(--accent-orange);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        /* What We Do Cards */
+        .parts-card {
+            background-color: var(--card-dark);
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .parts-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+        .parts-card-img-wrapper {
+            position: relative;
+            height: 200px;
+        }
+        .parts-card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .card-icon-badge {
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--accent-orange);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            border: 3px solid var(--card-dark);
+        }
+        .parts-card-body {
+            padding: 35px 20px 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .ask-link {
+            margin-top: auto;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .ask-link:hover { color: var(--accent-gold); }
+
+        /* Feature Bar */
+        .feature-bar {
+            background-color: var(--bg-darker);
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+        .feature-icon {
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+        }
+
+        /* Why Us Section */
+        .why-card {
+            background-color: var(--card-dark);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            transition: border-color 0.3s;
+        }
+        .why-card:hover { border-color: var(--accent-orange); }
+        .why-number {
+            color: var(--accent-orange);
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        /* Taxes Box */
+        .taxes-box {
+            border: 2px solid var(--accent-orange);
+            background-color: var(--bg-darker);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* CTA Banner */
+        .cta-banner {
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.539) 0%, rgba(8, 8, 8, 0.902) 90%),
+                url(madia/cha.png) center/cover no-repeat;
+            padding: 60px 0;
+            color: white;
+            text-align: center;
+        }
+        .btn-cta-group .btn {
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 10px 24px;
+        }
+        .btn-outline-light-custom {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
+        }
+        .btn-outline-light-custom:hover {
+            background: white;
+            color: var(--accent-orange);
+        }
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: white;
+            border: none;
+        }
+        .btn-whatsapp:hover { background-color: #1ebc5a; color: white; }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-darker);
+            border-top: 1px solid #333;
+        }
+        .floating-chat {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Top Bar (Based on image_c9a626) -->
+    <div class="top-bar py-2 d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center text-gray">
+            <div class="fw-bold text-light">Text or Call: (865) 685-5944</div>
+            <div class="d-flex gap-4">
+                <span><i class="fa-solid fa-truck me-2"></i> Ships Nationwide</span>
+                <span><i class="fa-solid fa-location-dot me-2"></i> Oak Ridge, TN</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <div class="container">
+            <a class="navbar-brand py-0" href="index.html">
+                <img src="IMG-20260907-WA0017_2.jpeg" alt="Tim Truck Parts and Repairs Logo" style="max-height: 60px; border-radius: 4px;">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="nav nav-pills my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="review.html">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FaQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <a href="tel:+18656855944" class="btn btn-call-header px-4 py-2 d-none d-lg-inline-block">
+                <i class="fa-solid fa-phone me-2"></i>(865) 685-5944
+            </a>
+        </div>
+    </nav>
+
+    <!-- 3. Hero Section (Based on image_c9a626) -->
+    <section class="services-hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="subtitle-hero mb-2">TIM TRUCK PARTS • OAK RIDGE, TN</div>
+                    <h1 class="hero-title">What We Do</h1>
+                    <p class="lead text-gray mb-4" style="max-width: 600px;">
+                        Tailgates, truck beds, toppers, and repairs — done right and shipped nationwide.
+                    </p>
+                    <a href="tel:+18656855944" class="btn btn-call-header px-4 py-3 fs-5">
+                        <i class="fa-solid fa-phone me-2"></i> Call (865) 685-5944
+                    </a>
+                    <a href="https://wa.me/18656855944" target="_blank" class="btn btn-action-custom btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. What We Do Cards (Based on image_c9aa43) -->
+    <section class="py-5" style="background-color: var(--bg-dark);">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <div class="subtitle-hero mb-2">WHAT WE DO</div>
+                <h2 class="display-5 fw-black text-white text-uppercase">Truck Parts & Repairs, Done Right</h2>
+            </div>
+
+            <div class="row g-4">
+                <!-- Card 1 -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="parts-card">
+                        <div class="parts-card-img-wrapper">
+                            <!-- Generic placeholders used for structure matching -->
+                            <img src="madia/met4.jpg" alt="Tailgates">
+                            <div class="card-icon-badge"><i class="fa-solid fa-truck-pickup"></i></div>
+                        </div>
+                        <div class="parts-card-body">
+                            <h3 class="h4 fw-bold text-white mb-3">Tailgates</h3>
+                            <p class="text-gray small mb-4">OEM and aftermarket tailgates for most makes — clean, ready to bolt on.</p>
+                            <a href="#" class="ask-link">Ask About This <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="parts-card">
+                        <div class="parts-card-img-wrapper">
+                            <img src="madia/met3.jpg" alt="Truck Beds">
+                            <div class="card-icon-badge"><i class="fa-solid fa-layer-group"></i></div>
+                        </div>
+                        <div class="parts-card-body">
+                            <h3 class="h4 fw-bold text-white mb-3">Truck Beds</h3>
+                            <p class="text-gray small mb-4">Short and long beds, dually and single — inspected and shipped nationwide.</p>
+                            <a href="#" class="ask-link">Ask About This <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="parts-card">
+                        <div class="parts-card-img-wrapper">
+                            <img src="madia/met2.jpg" alt="Truck Toppers">
+                            <div class="card-icon-badge"><i class="fa-solid fa-box-open"></i></div>
+                        </div>
+                        <div class="parts-card-body">
+                            <h3 class="h4 fw-bold text-white mb-3">Truck Toppers</h3>
+                            <p class="text-gray small mb-4">Camper shells and toppers in a range of colors and fits.</p>
+                            <a href="#" class="ask-link">Ask About This <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="col-12 col-md-6 col-lg-3">
+                    <div class="parts-card">
+                        <div class="parts-card-img-wrapper">
+                            <img src="madia/gen3.jpg" alt="Repairs">
+                            <div class="card-icon-badge"><i class="fa-solid fa-wrench"></i></div>
+                        </div>
+                        <div class="parts-card-body">
+                            <h3 class="h4 fw-bold text-white mb-3">Repairs</h3>
+                            <p class="text-gray small mb-4">Expert truck repair and part fitting by our Oak Ridge team.</p>
+                            <a href="#" class="ask-link">Ask About This <i class="fa-solid fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Feature Bar (Based on bottom of image_c9aa43) -->
+    <section class="feature-bar py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-lg-3 d-flex gap-3">
+                    <div class="feature-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <div>
+                        <h4 class="h6 fw-bold text-white mb-1">Nationwide Shipping</h4>
+                        <p class="text-gray small mb-0">We ship to all 50 states.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 d-flex gap-3">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <div>
+                        <h4 class="h6 fw-bold text-white mb-1">Quality Guaranteed</h4>
+                        <p class="text-gray small mb-0">Every part inspected before it ships.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 d-flex gap-3">
+                    <div class="feature-icon"><i class="fa-solid fa-headset"></i></div>
+                    <div>
+                        <h4 class="h6 fw-bold text-white mb-1">Expert Support</h4>
+                        <p class="text-gray small mb-0">Talk to a real person who knows trucks.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3 d-flex gap-3">
+                    <div class="feature-icon"><i class="fa-regular fa-circle-check"></i></div>
+                    <div>
+                        <h4 class="h6 fw-bold text-white mb-1">Since 2015</h4>
+                        <p class="text-gray small mb-0">Trusted by truck owners for years.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Why Us Section (Based on image_c9ada0) -->
+    <section class="py-5" style="background-color: var(--bg-dark);">
+        <div class="container py-5">
+            <div class="text-center mb-5">
+                <div class="subtitle-hero mb-2">WHY TIM TRUCK</div>
+                <h2 class="display-4 fw-black text-white text-uppercase">Why Truck Owners Call Us First</h2>
+            </div>
+
+            <div class="row g-4 mb-5">
+                <!-- 01 -->
+                <div class="col-12 col-md-6">
+                    <div class="why-card d-flex gap-4">
+                        <div class="why-number">01</div>
+                        <div>
+                            <h3 class="h5 fw-bold text-white mb-2">The part you need, sourced fast</h3>
+                            <p class="text-gray mb-0">Tailgates, beds, toppers and more — if we don't have it on the shelf, we'll track it down.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 02 -->
+                <div class="col-12 col-md-6">
+                    <div class="why-card d-flex gap-4">
+                        <div class="why-number">02</div>
+                        <div>
+                            <h3 class="h5 fw-bold text-white mb-2">Honest, fair pricing</h3>
+                            <p class="text-gray mb-0">Quality used and aftermarket parts at prices that make sense. Ask for a quote and you'll see.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 03 -->
+                <div class="col-12 col-md-6">
+                    <div class="why-card d-flex gap-4">
+                        <div class="why-number">03</div>
+                        <div>
+                            <h3 class="h5 fw-bold text-white mb-2">Shipped to your door</h3>
+                            <p class="text-gray mb-0">We pack carefully and ship to all 50 states from Oak Ridge.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 04 -->
+                <div class="col-12 col-md-6">
+                    <div class="why-card d-flex gap-4">
+                        <div class="why-number">04</div>
+                        <div>
+                            <h3 class="h5 fw-bold text-white mb-2">Repairs by people who know trucks</h3>
+                            <p class="text-gray mb-0">Not just parts — our team fits and repairs, so you can drive away sorted.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Taxes Box -->
+            <div class="taxes-box text-center">
+                <div class="text-orange fs-4 mb-3"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <h4 class="h5 fw-bold text-orange text-uppercase mb-3">Taxes & Fees</h4>
+                <p class="text-gray mb-0">
+                    Taxes and fees are not included in the initial pricing agreed for the parts and shipping cost. This amount varies depending on the amount agreed for the parts & shipping, and is calculated by the cashier only.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CTA Banner (Based on image_c9ae7f) -->
+    <section class="cta-banner">
+        <div class="container">
+            <h2 class="display-4 fw-black text-uppercase mb-3">Looking for a part? We've probably got it.</h2>
+            <p class="lead mb-5">Call, text, or message us on WhatsApp and tell us what your truck needs.</p>
+            
+            <div class="btn-cta-group d-flex flex-wrap justify-content-center gap-3 mb-4">
+                <a href="tel:+18656855944" class="btn btn-light text-dark fs-5">
+                    Call (865) 685-5944 <i class="fa-solid fa-chevron-right ms-2 small"></i>
+                </a>
+                <a href="sms:+18656855944" class="btn btn-outline-light-custom fs-5">
+                    <i class="fa-regular fa-comment-dots me-2"></i> Text
+                </a>
+                <a href="https://wa.me/18656855944" class="btn btn-whatsapp fs-5">
+                    <i class="fa-brands fa-whatsapp me-2"></i> WhatsApp
+                </a>
+                <a href="#" class="btn btn-outline-light-custom fs-5">
+                    <i class="fa-regular fa-envelope me-2"></i> Email
+                </a>
+            </div>
+            
+            <p class="small opacity-75 mt-4">Taxes & fees are calculated separately by the cashier.</p>
+        </div>
+    </section>
+
+    <!-- 8. Footer (Based on bottom of image_c9ae7f) -->
+    <footer class="py-5">
+        <div class="container border-bottom border-dark pb-4 mb-4">
+            <div class="row g-4">
+                <!-- Brand Info -->
+                <div class="col-lg-3">
+                    <img src="IMG-20260907-WA0017_2.jpeg" alt="Tim Truck Parts and Repairs Logo" style="max-height: 80px; border-radius: 4px;" class="mb-3">
+                    <p class="text-gray small mt-3">
+                        Quality truck beds, tailgates, toppers, and repairs — based in Oak Ridge, TN, shipping nationwide since 2015.
+                    </p>
+                </div>
+                
+                <!-- Explore Links -->
+                <div class="col-lg-3">
+                    <h5 class="text-white fw-bold mb-4">Explore</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                        <li><a href="#" class="text-decoration-none text-gray">Services</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-gray">Gallery</a></li>
+                        <li><a href="review.html" class="text-decoration-none text-gray">Reviews</a></li>
+                        <li><a href="about.html" class="text-decoration-none text-gray">About</a></li>
+                        <li><a href="faq.html" class="text-decoration-none text-gray">FAQ</a></li>
+                        <li><a href="contact.html" class="text-decoration-none text-gray">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="col-lg-3">
+                    <h5 class="text-white fw-bold mb-4">Contact</h5>
+                    <ul class="list-unstyled text-gray mb-0">
+                        <li class="mb-3 d-flex gap-2">
+                            <i class="fa-solid fa-phone mt-1"></i> <a href="tel:(865) 685-5944" style="color: white; text-decoration: none;">(865) 685-5944</a>
+                        </li>
+                        <li class="mb-3 d-flex gap-2">
+                            <i class="fa-solid fa-envelope mt-1"></i> <a href="mailto:Timtruckpartsandrepairs@gmail.com" style="color: white; text-decoration: none">Timtruckpartsandrepairs@gmail.com</a>
+
+                        </li>
+                        <li class="d-flex gap-2">
+                            <i class="fa-solid fa-location-dot mt-1"></i> 105 Warehouse Rd, Oak Ridge, TN 37830
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Text Widget CTA -->
+                <div class="col-lg-3">
+                    <h5 class="text-white fw-bold mb-4">Have a question? Text us!</h5>
+                    <a href="sms:+18656855944" class="btn btn-outline-light-custom px-4 py-2">
+                        <i class="fa-regular fa-comment-dots me-2"></i> Start a Text
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container text-center">
+            <p class="text-gray small mb-0 fw-bold">Taxes & Fees: <span class="fw-normal">Taxes and fees are not included in the initial pricing agreed for the parts and shipping cost. This amount varies depending on the amount agreed for the parts & shipping, and is calculated by the cashier only.</span></p>
+        </div>
+    </footer>
+
+    <!-- Floating Chat Button (Based on red icon bottom right of image_c9ae7f) -->
+    <a href="tel:+18656855944" class="floating-chat" aria-label="Call Us">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

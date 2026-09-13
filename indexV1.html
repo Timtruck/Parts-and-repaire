@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garage Auto - Réparation & Entretien</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome (Icônes) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --card-dark: #1e1e1e;
+            --accent-red: #e63946;
+            --accent-green: #25d366; /* WhatsApp */
+            --text-light: #f8f9fa;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: #080808;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #222;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-pills .nav-link {
+            color: #ccc;
+            border-radius: 20px;
+            padding: 6px 18px;
+            margin: 0 3px;
+        }
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            background-color: var(--accent-red);
+            color: #fff;
+        }
+
+        .btn-call-header {
+            background-color: var(--accent-red);
+            color: white;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 85vh;
+            background: linear-gradient(180deg, rgba(18,18,18,0.7) 0%, rgba(18,18,18,0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .hero-title span {
+            color: var(--accent-red);
+        }
+
+        .badge-location {
+            color: var(--accent-red);
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+        }
+
+        /* Action Buttons */
+        .btn-action {
+            padding: 12px 24px;
+            font-weight: 600;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-red { background-color: var(--accent-red); color: white; }
+        .btn-red:hover { background-color: #c82333; color: white; }
+
+        .btn-whatsapp { background-color: var(--accent-green); color: white; }
+        .btn-whatsapp:hover { background-color: #1eb954; color: white; }
+
+        .btn-dark-custom { background-color: #2b2b2b; color: white; border: 1px solid #444; }
+        .btn-dark-custom:hover { background-color: #3b3b3b; color: white; }
+
+        /* Floating Call Button for Mobile */
+        .floating-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(230, 57, 70, 0.5);
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2.2rem; }
+            .hero-buttons { display: flex; flex-direction: column; gap: 10px; }
+            .btn-action { width: 100%; justify-content: center; }
+        }
+        .carousel-img-wrapper {
+            position: relative;
+            height: 480px;
+        }
+
+        .carousel-img-wrapper img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-caption-custom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+            color: #fff;
+        }
+
+        .carousel-control-prev-icon-custom,
+        .carousel-control-next-icon-custom {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .carousel-control-prev-icon-custom:hover,
+        .carousel-control-next-icon-custom:hover {
+            background-color: var(--accent-red);
+        }
+
+        .thumbnail-btn {
+            height: 70px;
+            opacity: 0.5;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent !important;
+        }
+
+        .thumbnail-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-btn.active, .thumbnail-btn:hover {
+            opacity: 1;
+            border-color: var(--accent-red) !important;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-img-wrapper {
+                height: 300px;
+            }
+            .carousel-caption-custom h3 {
+                font-size: 1.2rem;
+            }
+            .carousel-caption-custom p {
+                font-size: 0.85rem;
+            }
+        }
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+
+        .fw-black {
+            font-weight: 900;
+        }
+
+        @media (max-width: 768px) {
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            .stat-label {
+                font-size: 0.75rem;
+            }
+        }
+        .service-card {
+            height: 380px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(230, 57, 70, 0.25);
+        }
+
+        .service-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .service-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.95) 85%);
+            transition: background 0.3s ease;
+        }
+
+        .service-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-red);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+
+        .service-link {
+            transition: color 0.2s ease;
+        }
+
+        .service-link:hover {
+            color: var(--accent-red) !important;
+        }
+
+        @media (max-width: 576px) {
+            .service-card {
+                height: 320px;
+            }
+        }
+        .cta-banner-section {
+            background: url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+        }
+
+        .cta-banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(10, 10, 10, 0.85);
+            z-index: 1;
+        }
+
+        .guarantee-icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(230, 57, 70, 0.15);
+            border: 1px solid rgba(230, 57, 70, 0.4);
+            color: var(--accent-red);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        @media (max-width: 768px) {
+            .cta-banner-section h2 {
+                font-size: 1.8rem;
+            }
+        }
+        .review-card {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            border-color: #ddd;
+        }
+
+        .review-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .btn-nav-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            color: #333;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .btn-nav-circle:hover {
+            background-color: var(--accent-red);
+            color: white;
+        }
+        .why-card {
+            background-color: #f8f9fa;
+            border: 1px solid #f0f0f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            background-color: #ffffff;
+            border-color: #e0e0e0;
+        }
+
+        .why-number {
+            font-size: 2.2rem;
+            line-height: 1;
+            font-weight: 900;
+        }
+         .btn-dark-cta {
+            background-color: rgba(0, 0, 0, 0.25);
+            color: #ffffff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s ease;
+        }
+
+        .btn-dark-cta:hover {
+            background-color: #000000;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
+            color: #ffffff;
+            border: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-whatsapp:hover {
+            color: #ffffff; 
+            opacity: 0.9;
+        }
+        .footer-link {
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Top Bar -->
+    <div class="top-bar py-2 text-muted d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div><i class="fa-solid fa-location-dot me-2 text-danger"></i> Douala, Cameroun — Disponible 6j/7</div>
+            <div><i class="fa-solid fa-truck-fast me-2"></i> Service de Dépannage Rapide</div>
+        </div>
+    </div>
+
+    <!-- 2. Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-uppercase" href="#">
+                <i class="fa-solid fa-wrench text-danger me-2"></i>Garage <span class="text-danger">Pro</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="nav nav-pills my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Avis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">À propos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <a href="tel:+237658527532" class="btn btn-call-header px-3 py-2 d-none d-lg-inline-block">
+                <i class="fa-solid fa-phone me-2"></i>+237 658 52 75 32
+            </a>
+        </div>
+    </nav>
+
+    <!-- 3. Hero Section -->
+    <section class="hero-section">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="badge-location text-uppercase mb-2">
+                        <i class="fa-solid fa-crosshairs me-1"></i> Réparation & Entretien Automobile
+                    </p>
+                    
+                    <h1 class="hero-title mb-3">
+                        Mécanique Générale <br>
+                        <span>& Diagnostic Auto</span>
+                    </h1>
+
+                    <p class="lead text-light opacity-75 mb-4">
+                        Vidange, freinage, électricité, climatisation et parallélisme. Un problème sur votre véhicule ? Appelez-nous ou envoyez un message, nous nous occupons du reste.
+                    </p>
+
+                    <!-- Action Buttons -->
+                    <div class="hero-buttons d-flex flex-wrap gap-2 mb-4">
+                        <a href="tel:+237658527532" class="btn btn-action btn-red">
+                            <i class="fa-solid fa-phone"></i> Appeler Directement
+                        </a>
+                        <a href="https://wa.me/237658527532" class="btn btn-action btn-whatsapp" target="_blank">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="#devis" class="btn btn-action btn-dark-custom">
+                            <i class="fa-solid fa-file-invoice"></i> Devis Gratuit
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION SHOWCASE / NOS RÉALISATIONS -->
+    <section class="py-5" style="background-color: #121212;">
+        <div class="container">
+            <!-- Sur-titre et Titre principal -->
+            <div class="text-center mb-4">
+                <span class="text-danger fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                    RÉALISATIONS & ÉQUIPEMENTS
+                </span>
+                <h2 class="display-5 fw-bold text-white mt-1">
+                    Nos Interventions & Atelier
+                </h2>
+            </div>
+
+            <!-- Carrousel Principal -->
+            <div id="showcaseCarousel" class="carousel slide custom-carousel rounded-4 overflow-hidden mb-3 shadow-lg" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <div class="carousel-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Réparation Moteur">
+                            <div class="carousel-caption-custom">
+                                <h3 class="fw-bold mb-1">Diagnostic & Réparation Moteur</h3>
+                                <p class="mb-0 text-light opacity-75">Interventions de précision sur véhicules légers et utilitaires.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <div class="carousel-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Freinage et Amortisseurs">
+                            <div class="carousel-caption-custom">
+                                <h3 class="fw-bold mb-1">Système de Freinage & Suspendions</h3>
+                                <p class="mb-0 text-light opacity-75">Changement de disques, plaquettes et contrôle de sécurité complet.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <div class="carousel-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=1200&q=80" class="d-block w-100" alt="Électricité et Climatisation">
+                            <div class="carousel-caption-custom">
+                                <h3 class="fw-bold mb-1">Électricité & Climatisation Auto</h3>
+                                <p class="mb-0 text-light opacity-75">Recharge de gaz, recherche de pannes électriques et reprogrammation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Boutons Précédent / Suivant -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#showcaseCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon-custom"><i class="fa-solid fa-chevron-left"></i></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#showcaseCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon-custom"><i class="fa-solid fa-chevron-right"></i></span>
+                </button>
+            </div>
+
+            <!-- Miniatures (Thumbnails) pour changer d'image -->
+            <div class="row g-2 justify-content-center">
+                <div class="col-4 col-md-2">
+                    <button type="button" data-bs-target="#showcaseCarousel" data-bs-slide-to="0" class="active thumbnail-btn w-100 p-0 border-0 rounded-3 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=300&q=80" class="img-fluid" alt="Moteur">
+                    </button>
+                </div>
+                <div class="col-4 col-md-2">
+                    <button type="button" data-bs-target="#showcaseCarousel" data-bs-slide-to="1" class="thumbnail-btn w-100 p-0 border-0 rounded-3 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=300&q=80" class="img-fluid" alt="Freinage">
+                    </button>
+                </div>
+                <div class="col-4 col-md-2">
+                    <button type="button" data-bs-target="#showcaseCarousel" data-bs-slide-to="2" class="thumbnail-btn w-100 p-0 border-0 rounded-3 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=300&q=80" class="img-fluid" alt="Climatisation">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. BANDEAU DE CHIFFRES CLÉS (STATS BAR) -->
+    <section class="stats-bar py-4" style="background-color: var(--accent-red);">
+        <div class="container">
+            <div class="row text-center text-white g-4">
+                
+                <div class="col-6 col-md-3">
+                    <div class="stat-number fw-black">10+</div>
+                    <div class="stat-label text-uppercase font-small">Années d'Expérience</div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="stat-number fw-black">5000+</div>
+                    <div class="stat-label text-uppercase font-small">Véhicules Réparés</div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="stat-number fw-black">100%</div>
+                    <div class="stat-label text-uppercase font-small">Pièces Garanties</div>
+                </div>
+
+                <div class="col-6 col-md-3">
+                    <div class="stat-number fw-black">4.9 ★</div>
+                    <div class="stat-label text-uppercase font-small">Note Moyenne Clients</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SECTION WHAT WE DO / NOS SERVICES -->
+    <section class="py-5 bg-white text-dark">
+        <div class="container py-4 text-center">
+            
+            <span class="text-danger fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                CE QUE NOUS FAISONS
+            </span>
+            
+            <h2 class="display-4 fw-black text-uppercase mt-2 mb-4" style="color: #111;">
+                Réparation & Entretien Auto Fait Dans Les Règles
+            </h2>
+
+            <p class="lead text-muted mx-auto" style="max-width: 750px;">
+                De la simple vidange jusqu'au diagnostic électronique complexe, nous mettons notre expertise au service de la sécurité et des performances de votre véhicule.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- GRILLE DE SERVICES (CARDS) -->
+    <section class="pb-5 bg-white">
+        <div class="container">
+            <div class="row g-4">
+                
+                <!-- Carte 1 : Diagnostic & Électricité -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="service-card rounded-4 overflow-hidden position-relative">
+                        <img src="https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=600&q=80" alt="Diagnostic Auto" class="service-card-img">
+                        <div class="service-card-overlay p-4 d-flex flex-column justify-content-end">
+                            <div class="service-icon mb-2">
+                                <i class="fa-solid fa-microchip"></i>
+                            </div>
+                            <h3 class="h4 fw-bold text-white mb-2">Diagnostic Auto</h3>
+                            <p class="text-light opacity-75 small mb-3">
+                                Détection rapide des pannes électroniques et lecture des codes défauts multi-marques.
+                            </p>
+                            <a href="https://wa.me/237658527532?text=Bonjour,%20je%20souhaite%20un%20renseignement%20sur%20le%20Diagnostic" class="service-link text-white text-decoration-none fw-bold small">
+                                En savoir plus <i class="fa-solid fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 2 : Entretien & Vidange -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="service-card rounded-4 overflow-hidden position-relative">
+                        <img src="https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=600&q=80" alt="Entretien & Vidange" class="service-card-img">
+                        <div class="service-card-overlay p-4 d-flex flex-column justify-content-end">
+                            <div class="service-icon mb-2">
+                                <i class="fa-solid fa-oil-can"></i>
+                            </div>
+                            <h3 class="h4 fw-bold text-white mb-2">Vidange & Révision</h3>
+                            <p class="text-light opacity-75 small mb-3">
+                                Remplacement d'huile synthétique, changement des filtres et check-up sécurité 30 points.
+                            </p>
+                            <a href="https://wa.me/237658527532?text=Bonjour,%20je%20souhaite%20un%20renseignement%20sur%20la%20Vidange" class="service-link text-white text-decoration-none fw-bold small">
+                                En savoir plus <i class="fa-solid fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 3 : Système de Freinage -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="service-card rounded-4 overflow-hidden position-relative">
+                        <img src="https://images.unsplash.com/photo-1617814076367-b759c7d7e738?auto=format&fit=crop&w=600&q=80" alt="Freinage & Sécurité" class="service-card-img">
+                        <div class="service-card-overlay p-4 d-flex flex-column justify-content-end">
+                            <div class="service-icon mb-2">
+                                <i class="fa-solid fa-shield-halved"></i>
+                            </div>
+                            <h3 class="h4 fw-bold text-white mb-2">Freinage & Disques</h3>
+                            <p class="text-light opacity-75 small mb-3">
+                                Changement de plaquettes, disques et purge complète du circuit de freinage.
+                            </p>
+                            <a href="https://wa.me/237658527532?text=Bonjour,%20je%20souhaite%20un%20renseignement%20sur%20le%20Freinage" class="service-link text-white text-decoration-none fw-bold small">
+                                En savoir plus <i class="fa-solid fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 4 : Réparation Moteur -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="service-card rounded-4 overflow-hidden position-relative">
+                        <img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?auto=format&fit=crop&w=600&q=80" alt="Mécanique Lourde" class="service-card-img">
+                        <div class="service-card-overlay p-4 d-flex flex-column justify-content-end">
+                            <div class="service-icon mb-2">
+                                <i class="fa-solid fa-wrench"></i>
+                            </div>
+                            <h3 class="h4 fw-bold text-white mb-2">Mécanique Lourde</h3>
+                            <p class="text-light opacity-75 small mb-3">
+                                Courroie de distribution, embrayage, pièces moteur et réparations complexes.
+                            </p>
+                            <a href="https://wa.me/237658527532?text=Bonjour,%20je%20souhaite%20un%20renseignement%20sur%20la%20Mécanique" class="service-link text-white text-decoration-none fw-bold small">
+                                En savoir plus <i class="fa-solid fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. BANNIÈRE CTA / ENGAGEMENT ATELIER -->
+    <section class="cta-banner-section position-relative py-5">
+        <div class="container py-4 text-center position-relative z-2">
+            <h2 class="display-4 fw-black text-white text-uppercase mb-3">
+                Pas Seulement Des Pièces – Nous Réparons Aussi Vos Véhicules
+            </h2>
+            <p class="lead text-light opacity-75 mx-auto mb-4" style="max-width: 750px;">
+                Notre équipe de mécaniciens qualifiés prend en charge vos réparations et l'installation de vos pièces directement dans notre atelier. Confiez-nous votre véhicule et reprenez la route en toute sérénité.
+            </p>
+            <a href="tel:+237658527532" class="btn btn-red btn-action fs-5 px-4 py-3">
+                <i class="fa-solid fa-wrench me-2"></i> Prendre Rendez-vous à l'Atelier
+            </a>
+        </div>
+        <div class="cta-banner-overlay"></div>
+    </section>
+
+    <!-- 2. BARRE DES 4 ENGAGEMENTS / GARANTIES -->
+    <section class="guarantees-bar py-5" style="background-color: #1a1c1e;">
+        <div class="container">
+            <div class="row g-4">
+                
+                <!-- Garantie 1 -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="guarantee-icon-box flex-shrink-0">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div>
+                            <h4 class="h6 fw-bold text-white mb-1">Intervention Rapide</h4>
+                            <p class="text-muted small mb-0">Prise en charge prioritaire pour les urgences.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Garantie 2 -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="guarantee-icon-box flex-shrink-0">
+                            <i class="fa-solid fa-shield-check"></i>
+                        </div>
+                        <div>
+                            <h4 class="h6 fw-bold text-white mb-1">Qualité Garantie</h4>
+                            <p class="text-muted small mb-0">Pièces contrôlées et certifiées avant pose.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Garantie 3 -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="guarantee-icon-box flex-shrink-0">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <div>
+                            <h4 class="h6 fw-bold text-white mb-1">Support Expert</h4>
+                            <p class="text-muted small mb-0">Échangez avec un mécanicien qualifié.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Garantie 4 -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="guarantee-icon-box flex-shrink-0">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <h4 class="h6 fw-bold text-white mb-1">Expérience Reconnue</h4>
+                            <p class="text-muted small mb-0">Une confiance bâtie sur des années de service.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION AVIS CLIENTS (REVIEWS) -->
+    <section class="py-5 bg-white text-dark">
+        <div class="container py-4">
+            
+            <!-- En-tête de section -->
+            <div class="text-center mb-5">
+                <span class="text-danger fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                    AVIS CLIENTS
+                </span>
+                <h2 class="display-4 fw-black text-uppercase mt-1 mb-3" style="color: #111;">
+                    Ce Que Disent Nos Clients
+                </h2>
+                
+                <!-- Note globale et étoiles -->
+                <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                    <div class="text-danger fs-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-muted fw-semibold mb-0">
+                    <strong class="text-dark fs-5">4.9 / 5</strong> · Plus de 500 avis d'automobilistes satisfaits
+                </p>
+            </div>
+
+            <!-- Grille / Carrousel de cartes d'avis -->
+            <div class="row g-4 mb-4">
+                
+                <!-- Avis 1 -->
+                <div class="col-12 col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-danger mb-3">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text text-secondary mb-4">
+                                « Service impeccable ! Le diagnostic de mon problème d'injection a été fait en moins d'une heure. Prix honnête et travail très propre. »
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-dark">Marc K.</h3>
+                            <small class="text-muted">Toyota Hilux · Douala</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avis 2 -->
+                <div class="col-12 col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-danger mb-3">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text text-secondary mb-4">
+                                « Dépannage rapide un samedi après-midi. Changement de plaquettes de frein rapide et l'équipe est super accueillante. Je recommande à 100%. »
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-dark">Arnaud T.</h3>
+                            <small class="text-muted">Mercedes C-Class · Yaoundé</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avis 3 -->
+                <div class="col-12 col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-danger mb-3">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="review-text text-secondary mb-4">
+                                « Très bon garage pour la climatisation et la vidange. Conseils clairs, pas de mauvaises surprises sur la facture. »
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-dark">Sandrine M.</h3>
+                            <small class="text-muted">SUZUKI Vitara · Douala</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Flèches de navigation (Style épuré) -->
+            <div class="d-flex justify-content-center gap-2 mb-4">
+                <button class="btn btn-nav-circle" aria-label="Avis précédent">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button class="btn btn-nav-circle" aria-label="Avis suivant">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- Bouton Voir tous les avis -->
+            <div class="text-center">
+                <a href="#reviews" class="btn btn-red px-4 py-3 fw-bold">
+                    Voir Tous Les Avis Clients
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION POURQUOI NOUS CHOISIR (WHY US) -->
+    <section class="py-5 bg-white text-dark">
+        <div class="container py-4">
+            
+            <!-- En-tête de section -->
+            <div class="text-center mb-5">
+                <span class="text-danger fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                    POURQUOI GARAGE PRO
+                </span>
+                <h2 class="display-4 fw-black text-uppercase mt-1 mb-3" style="color: #111;">
+                    Pourquoi Les Automobilistes Nous Font Confiance
+                </h2>
+            </div>
+
+            <!-- Grille des 4 avantages numérotés -->
+            <div class="row g-4">
+                
+                <!-- Bloc 01 -->
+                <div class="col-12 col-md-6">
+                    <div class="why-card p-4 rounded-4 h-100 d-flex align-items-start gap-4">
+                        <span class="why-number text-danger fw-black">01</span>
+                        <div>
+                            <h3 class="h5 fw-bold text-dark mb-2">La pièce qu'il vous faut, rapidement</h3>
+                            <p class="text-muted small mb-0">
+                                Pièces d'origine et équivalentes en stock. Si nous ne l'avons pas en atelier, nous la trouvons pour vous sous 24h à 48h.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 02 -->
+                <div class="col-12 col-md-6">
+                    <div class="why-card p-4 rounded-4 h-100 d-flex align-items-start gap-4">
+                        <span class="why-number text-danger fw-black">02</span>
+                        <div>
+                            <h3 class="h5 fw-bold text-dark mb-2">Tarification transparente et juste</h3>
+                            <p class="text-muted small mb-0">
+                                Des diagnostics précis et un devis validé avant toute intervention. Pas de mauvaises surprises sur la facture finale.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 03 -->
+                <div class="col-12 col-md-6">
+                    <div class="why-card p-4 rounded-4 h-100 d-flex align-items-start gap-4">
+                        <span class="why-number text-danger fw-black">03</span>
+                        <div>
+                            <h3 class="h5 fw-bold text-dark mb-2">Service de dépannage & livraison</h3>
+                            <p class="text-muted small mb-0">
+                                Remorquage d'urgence et livraison de pièces directement dans toute la ville et ses environs.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloc 04 -->
+                <div class="col-12 col-md-6">
+                    <div class="why-card p-4 rounded-4 h-100 d-flex align-items-start gap-4">
+                        <span class="why-number text-danger fw-black">04</span>
+                        <div>
+                            <h3 class="h5 fw-bold text-dark mb-2">Réparations par des experts qualifiés</h3>
+                            <p class="text-muted small mb-0">
+                                Une équipe de mécaniciens et d'électriciens chevronnés pour remettre votre véhicule en route rapidement et en toute sécurité.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+   
+    <!-- SECTION MEET THE OWNER / À PROPOS -->
+    <section class="py-5 text-dark" style="background-color: #f8f9fa;">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                
+                <!-- Colonne Gauche : Photo du Fondateur -->
+                <div class="col-12 col-lg-6">
+                    <div class="position-relative overflow-hidden rounded-4 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="Franck SEUNG-JUNE" class="img-fluid w-100 object-fit-cover" style="max-height: 480px;">
+                    </div>
+                </div>
+
+                <!-- Colonne Droite : Présentation & Actions -->
+                <div class="col-12 col-lg-6">
+                    
+                    <span class="text-danger fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                        MEET THE OWNER
+                    </span>
+                    
+                    <h2 class="display-5 fw-black text-uppercase mt-1 mb-3" style="color: #111;">
+                        Franck SEUNG-JUNE
+                    </h2>
+
+                    <p class="text-secondary mb-3" style="line-height: 1.7;">
+                        Depuis 2017, Franck a bâti l'atelier sur une idée simple : offrir aux automobilistes la bonne pièce, au juste prix, sans détour. Ce qui a commencé comme un simple atelier local s'est développé pour servir des clients dans tout le pays.
+                    </p>
+
+                    <p class="text-secondary mb-4" style="line-height: 1.7;">
+                        Appelez-nous ou envoyez un message : vous échangeriez directement avec un passionné de mécanique qui comprend vos besoins et vous répondra en toute transparence.
+                    </p>
+
+                    <!-- Badge Pill -->
+                    <div class="mb-4">
+                        <span class="badge rounded-pill bg-danger-subtle text-danger px-3 py-2 fw-semibold" style="font-size: 0.85rem; background-color: #ffe6e6;">
+                            Au service des automobilistes depuis 2017
+                        </span>
+                    </div>
+
+                    <!-- Boutons d'action -->
+                    <div class="d-flex flex-wrap gap-2">
+                        <a href="tel:+237658527532" class="btn btn-red px-4 py-2 fw-bold d-inline-flex align-items-center gap-2">
+                            <i class="fa-solid fa-phone"></i> Appeler
+                        </a>
+                        
+                        <a href="sms:+237658527532" class="btn btn-dark px-4 py-2 fw-bold d-inline-flex align-items-center gap-2">
+                            <i class="fa-solid fa-comment"></i> SMS
+                        </a>
+                        
+                        <a href="https://wa.me/237658527532" class="btn btn-success px-4 py-2 fw-bold d-inline-flex align-items-center gap-2" style="background-color: #25D366; border: none;">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </a>
+                        
+                        <a href="mailto:contact@exemple.com" class="btn btn-light border px-4 py-2 fw-bold d-inline-flex align-items-center gap-2">
+                            <i class="fa-solid fa-envelope"></i> Email
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. SECTION SLOGAN SUR FOND SOMBRE -->
+    <section class="py-5 bg-dark text-white text-center">
+        <div class="container py-5">
+            <h2 class="display-3 fw-black text-uppercase mb-0">
+                Built For Trucks. <br>
+                <span class="text-danger">Trusted Since 2017.</span>
+            </h2>
+        </div>
+    </section>
+
+    <!-- 2. BANDEAU DE CONTACT ROUGE (PRE-FOOTER) -->
+    <section class="py-5 text-white text-center" style="background-color: var(--accent-red);">
+        <div class="container py-3">
+            
+            <h2 class="display-5 fw-black text-uppercase mb-2">
+                Vous cherchez une pièce ? Nous l'avons probablement.
+            </h2>
+            
+            <p class="fs-5 opacity-90 mb-4">
+                Appelez, envoyez un SMS ou écrivez-nous sur WhatsApp pour nous préciser votre besoin.
+            </p>
+
+            <!-- Groupe de boutons de contact -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-3">
+                <a href="tel:+237658527532" class="btn btn-dark-cta px-4 py-2 fw-bold d-inline-flex align-items-center gap-2">
+                    <i class="fa-solid fa-phone"></i> Appeler <i class="fa-solid fa-chevron-right ms-1"></i>
+                </a>
+
+                <a href="sms:+237658527532" class="btn btn-dark-cta px-4 py-2 fw-bold d-inline-flex align-items-center gap-2">
+                    <i class="fa-solid fa-comment"></i> Text
+                </a>
+
+                <a href="https://wa.me/237658527532" class="btn btn-whatsapp px-4 py-2 fw-bold d-inline-flex align-items-center gap-2">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+
+                <a href="mailto:contact@exemple.com" class="btn btn-dark-cta px-4 py-2 fw-bold d-inline-flex align-items-center gap-2">
+                    <i class="fa-solid fa-envelope"></i> Email
+                </a>
+            </div>
+
+            <!-- Mention légale / Note sous les boutons -->
+            <small class="opacity-75 d-block" style="font-size: 0.8rem;">
+                Les taxes et frais sont calculés séparément lors du règlement.
+            </small>
+
+        </div>
+    </section>
+
+<!-- FOOTER PRINCIPAL -->
+    <footer class="bg-dark text-white pt-5">
+        <div class="container py-4">
+            <div class="row g-4 justify-content-between">
+                
+                <!-- Colonne 1 : Logo & Description -->
+                <div class="col-12 col-md-4 col-lg-3">
+                    <div class="mb-3">
+                        <img src="logo.png" alt="Logo" class="img-fluid" style="max-height: 50px;">
+                    </div>
+                    <p class="text-secondary small mb-0" style="line-height: 1.6;">
+                        Quality truck beds, tailgates, toppers, and repairs — based in Los Angeles, shipping nationwide since 2017.
+                    </p>
+                </div>
+
+                <!-- Colonne 2 : Liens Explore -->
+                <div class="col-6 col-md-2">
+                    <h3 class="h6 fw-bold text-white text-uppercase mb-3">Explore</h3>
+                    <ul class="list-unstyled mb-0 d-flex flex-column gap-2 small">
+                        <li><a href="#services" class="text-secondary text-decoration-none footer-link">Services</a></li>
+                        <li><a href="#gallery" class="text-secondary text-decoration-none footer-link">Gallery</a></li>
+                        <li><a href="#reviews" class="text-secondary text-decoration-none footer-link">Reviews</a></li>
+                        <li><a href="#about" class="text-secondary text-decoration-none footer-link">About</a></li>
+                        <li><a href="#faq" class="text-secondary text-decoration-none footer-link">FAQ</a></li>
+                        <li><a href="#contact" class="text-secondary text-decoration-none footer-link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 3 : Informations de Contact -->
+                <div class="col-12 col-md-3">
+                    <h3 class="h6 fw-bold text-white text-uppercase mb-3">Contact</h3>
+                    <ul class="list-unstyled mb-0 d-flex flex-column gap-3 small text-secondary">
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-phone text-white"></i>
+                            <a href="tel:+1234567890" class="text-secondary text-decoration-none footer-link">+1 (234) 567-890</a>
+                        </li>
+                        <li class="d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-envelope text-white"></i>
+                            <a href="mailto:repair@gmail.com" class="text-secondary text-decoration-none footer-link">repair@gmail.com</a>
+                        </li>
+                        <li class="d-flex align-items-start gap-2">
+                            <i class="fa-solid fa-location-dot text-white mt-1"></i>
+                            <span>2500 St, Los Angeles, CA</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Colonne 4 : CTA Text Us -->
+                <div class="col-12 col-md-3">
+                    <h3 class="h6 fw-bold text-white mb-3">Have a question? Text us!</h3>
+                    <a href="sms:+1234567890" class="btn btn-red px-4 py-2 fw-bold d-inline-flex align-items-center gap-2">
+                        <i class="fa-solid fa-comment"></i> Start a Text
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- BANNIÈRE TAXES & FEES -->
+        <div class="py-3 text-center border-top border-bottom border-secondary border-opacity-25" style="background-color: #16191e;">
+            <div class="container">
+                <p class="text-secondary mb-0" style="font-size: 0.78rem; line-height: 1.5;">
+                    <strong class="text-white">Taxes & Fees:</strong> Taxes and fees are not included in the initial pricing agreed for the parts and shipping cost. This amount varies depending on the amount agreed for the parts & shipping, and is calculated by the cashier only.
+                </p>
+            </div>
+        </div>
+
+        <!-- BARRE DE COPYRIGHT ET LIENS LÉGAUX -->
+        <div class="py-3" style="background-color: #0b0c0e;">
+            <div class="container">
+                <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-2" style="font-size: 0.8rem;">
+                    <p class="text-secondary mb-0">
+                        © 2017–2026 Franck Truck Parts and Repairs. All rights reserved.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#privacy" class="text-secondary text-decoration-none footer-link">Privacy</a>
+                        <a href="#terms" class="text-secondary text-decoration-none footer-link">Terms</a>
+                        <a href="#accessibility" class="text-secondary text-decoration-none footer-link">Accessibility</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+ 
+
+    <!-- 4. Bouton d'appel flottant (Mobile uniquement) -->
+    <a href="tel:+237658527532" class="floating-call d-md-none" aria-label="Appeler le garage">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/bootstrap.bundle.min.js"></script>
+</body>
+</html>

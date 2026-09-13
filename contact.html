@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TIM TRUCK Parts and Repairs</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-darker: #080808;
+            --card-dark: #1e1e1e;
+            --card-gray: #2d2d2d;
+            --accent-gold: #FFB800; 
+            --accent-orange: #E65C00; 
+            --text-light: #f8f9fa;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .text-gold { color: var(--accent-gold) !important; }
+        .text-orange { color: var(--accent-orange) !important; }
+        .text-gray { color: var(--text-gray) !important; }
+        
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--bg-darker);
+            font-size: 0.85rem;
+            border-bottom: 1px solid #222;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-orange);
+        }
+        .nav-pills .nav-link {
+            color: #ccc;
+            border-radius: 20px;
+            padding: 6px 18px;
+            margin: 0 3px;
+            transition: 0.3s;
+        }
+        .nav-link:hover { color: var(--accent-gold); }
+        .nav-pills .nav-link.active {
+            background-color: var(--accent-orange);
+            color: #fff;
+        }
+        .btn-call-header {
+            background-color: var(--accent-orange);
+            color: white;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        .btn-call-header:hover { background-color: #cc5200; color: white; }
+
+        /* Hero Contact */
+        .contact-hero {
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.222) 0%, rgba(18, 18, 18, 0.617) 90%),
+                url(madia/gen5.jpg) center/cover no-repeat;
+            padding: 80px 0;
+            border-bottom: 1px solid #333;
+        }
+        .subtitle-hero {
+            color: var(--accent-orange);
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Content Section */
+        .contact-card-box {
+            background-color: var(--card-dark);
+            border: 1px solid #333;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Buttons Custom */
+        .btn-action-custom {
+            padding: 10px 20px;
+            font-weight: bold;
+            border-radius: 8px;
+            border: none;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+        .btn-red-action { background-color: var(--accent-orange); color: white; }
+        .btn-red-action:hover { background-color: #cc5200; color: white; }
+        .btn-dark-action { background-color: var(--card-gray); color: white; border: 1px solid #444; }
+        .btn-dark-action:hover { background-color: #3d3d3d; color: white; }
+        .btn-whatsapp { background-color: #25D366; color: white; }
+        .btn-whatsapp:hover { background-color: #1ebe5d; color: white; }
+        .btn-email-action { background-color: #2d2d2d; color: white; border: 1px solid #444; }
+        .btn-email-action:hover { background-color: #3d3d3d; color: white; }
+
+        /* Taxes & Fees Warning Box */
+        .tax-warning-box {
+            background-color: var(--card-dark);
+            border: 1px solid var(--accent-orange);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            margin: 50px auto;
+            max-width: 900px;
+        }
+
+        /* CTA Bottom Section */
+        .cta-bottom-section {
+            background-color: var(--accent-orange);
+            color: white;
+            padding: 70px 0;
+            text-align: center;
+        }
+        .cta-bottom-title {
+            font-size: 2.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-darker);
+            border-top: 1px solid #333;
+        }
+        .footer-link {
+            color: var(--text-gray) !important;
+            transition: color 0.2s ease;
+        }
+        .footer-link:hover { color: var(--accent-gold) !important; }
+        
+        .floating-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(230, 92, 0, 0.5);
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Top Bar -->
+    <div class="top-bar py-2 d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center text-gray">
+            <div><i class="fa-solid fa-phone text-orange me-2"></i> Text or Call: (865) 685-5944</div>
+            <div><i class="fa-solid fa-truck me-2 text-orange"></i> Ships Nationwide &nbsp;|&nbsp; <i class="fa-solid fa-location-dot me-2 text-gold"></i> Oak Ridge, TN</div>
+        </div>
+    </div>
+
+    <!-- 2. Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <div class="container">
+            <a class="navbar-brand py-0" href="index.html">
+                <img src="IMG-20260907-WA0017_2.jpeg" alt="Tim Truck Logo" style="max-height: 60px; border-radius: 4px;">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="nav nav-pills my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="review.html">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FaQ</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <a href="tel:+18656855944" class="btn btn-call-header px-3 py-2 d-none d-lg-inline-block">
+                <i class="fa-solid fa-phone me-2"></i>(865) 685-5944
+            </a>
+        </div>
+    </nav>
+
+    <!-- 3. Contact Hero Section -->
+    <section class="contact-hero">
+        <div class="container py-4">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="subtitle-hero mb-2">
+                        TIM TRUCK PARTS • OAK RIDGE, TN
+                    </p>
+                    <h1 class="hero-title text-white">
+                        Get In <span class="text-gold">Touch</span>
+                    </h1>
+                    <p class="lead text-gray mb-4">
+                        Call, text, or message us on WhatsApp — tell us your truck and the part you need.
+                    </p>
+                    <a href="tel:+18656855944" class="btn btn-call-header px-4 py-3 fs-5">
+                        <i class="fa-solid fa-phone me-2"></i> Call (865) 685-5944
+                    </a>
+                    <a href="https://wa.me/18656855944" target="_blank" class="btn btn-action-custom btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Main Contact Details & Map Section -->
+    <section class="py-5" style="background-color: var(--bg-dark);">
+        <div class="container py-4">
+            <div class="row g-5 align-items-center">
+                
+                <!-- Left: Contact Information & Actions -->
+                <div class="col-lg-6">
+                    <div class="contact-card-box">
+                        <p class="subtitle-hero mb-1">VISIT / CONTACT</p>
+                        <h2 class="h2 fw-bold text-white text-uppercase mb-4">Find Us in Oak Ridge</h2>
+                        
+                        <ul class="list-unstyled text-gray mb-4">
+                            <li class="mb-3 d-flex align-items-start gap-3">
+                                <i class="fa-solid fa-location-dot text-gold fs-5 mt-1"></i>
+                                <span>105 Warehouse Rd, Oak Ridge, TN 37830</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-phone text-gold fs-5"></i>
+                                <span class="text-white fw-bold">(865) 685-5944</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-envelope text-gold fs-5"></i>
+                                <span class="text-white">info@timtruck.com</span>
+                            </li>
+                            <li class="mb-3 d-flex align-items-center gap-3">
+                                <i class="fa-solid fa-truck text-orange fs-5"></i>
+                                <span>Ships nationwide</span>
+                            </li>
+                        </ul>
+
+                        <p class="small text-gray mb-4 border-start border-warning ps-3">
+                            Note: taxes & fees are not included in part/shipping pricing and are calculated separately by the cashier.
+                        </p>
+
+                        <!-- Action Buttons Grid -->
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="tel:+18656855944" class="btn btn-action-custom btn-red-action">
+                                <i class="fa-solid fa-phone"></i> Call (865) 685-5944
+                            </a>
+                            <a href="sms:+18656855944" class="btn btn-action-custom btn-dark-action">
+                                <i class="fa-solid fa-comment-sms"></i> Text
+                            </a>
+                            <a href="https://wa.me/18656855944" target="_blank" class="btn btn-action-custom btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="mailto:info@timtruck.com" class="btn btn-action-custom btn-email-action">
+                                <i class="fa-solid fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Google Maps Embed -->
+                <div class="col-lg-6">
+                    <div class="card bg-dark border-secondary rounded-4 overflow-hidden shadow-lg" style="height: 450px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3221.785303646549!2d-84.2635!3d36.0104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885c39247654321%3A0x123456789abcdef!2s105%20Warehouse%20Rd%2C%20Oak%20Ridge%2C%20TN%2037830!5e0!3m2!1sen!2sus!4v1650000000000!5m2!1sen!2sus" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Taxes & Fees Warning Card -->
+            <div class="tax-warning-box">
+                <div class="text-orange fs-3 mb-2"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <h4 class="text-white text-uppercase fw-bold mb-2">Taxes & Fees</h4>
+                <p class="text-gray mb-0">
+                    Taxes and fees are not included in the initial pricing agreed for the parts and shipping cost. This amount varies depending on the amount agreed for the parts & shipping, and is calculated by the cashier only.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- 5. CTA Bottom Section -->
+    <section class="cta-bottom-section">
+        <div class="container">
+            <h2 class="cta-bottom-title text-white">Need a part today?</h2>
+            <p class="lead text-white opacity-90 mb-4">One message and we'll tell you if we've got it — and get it on its way to you.</p>
+            
+            <div class="d-flex flex-wrap justify-content-center gap-3">
+                <a href="tel:+18656855944" class="btn btn-action-custom btn-dark-action">
+                    <i class="fa-solid fa-phone"></i> Call (865) 685-5944
+                </a>
+                <a href="sms:+18656855944" class="btn btn-action-custom btn-dark-action">
+                    <i class="fa-solid fa-comment-sms"></i> Text
+                </a>
+                <a href="https://wa.me/18656855944" target="_blank" class="btn btn-action-custom btn-whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="mailto:info@timtruck.com" class="btn btn-action-custom btn-dark-action">
+                    <i class="fa-solid fa-envelope"></i> Email
+                </a>
+            </div>
+            
+            <p class="small text-white opacity-75 mt-4 mb-0">Taxes & fees are calculated separately by the cashier.</p>
+        </div>
+    </section>
+
+    <!-- 6. FOOTER (Identique) -->
+    <footer class="py-5">
+        <div class="container border-bottom border-secondary pb-4 mb-4">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="IMG-20260907-WA0017_2.jpeg" alt="Tim Truck Logo" style="max-height: 50px; border-radius: 4px;" class="mb-3">
+                    <p class="text-gray mb-4 pe-lg-4">
+                        Spécialistes Pickup depuis 2015. Confiez votre véhicule à une équipe experte qui comprend l'exigence des utilitaires lourds.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-action-custom btn-dark-action rounded-circle" style="width:42px; height:42px; padding:0; justify-content:center;"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-action-custom btn-dark-action rounded-circle" style="width:42px; height:42px; padding:0; justify-content:center;"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="text-white fw-bold mb-4">Services Principaux</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                        <li><a href="#" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Vente de Pièces (Parts)</a></li>
+                        <li><a href="#" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Entretien & Vidange</a></li>
+                        <li><a href="#" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Mécanique Lourde</a></li>
+                        <li><a href="#" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Freinage & Suspensions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="text-white fw-bold mb-4">Contact</h5>
+                    <ul class="list-unstyled text-gray mb-0">
+                        <li class="mb-3"><i class="fa-solid fa-location-dot text-gold me-2"></i> 105 Warehouse Rd, Oak Ridge, TN 37830</li>
+                        <li class="mb-3"><i class="fa-solid fa-phone text-gold me-2"></i> <a href="tel:(865) 685-5944" style="color: white; text-decoration: none;">(865) 685-5944</a></li>
+                        <li class="mb-3 d-flex gap-2">
+                            <i class="fa-solid fa-envelope text-gold mt-1"></i> <a href="mailto:Timtruckpartsandrepairs@gmail.com" style="color: white; text-decoration: none">Timtruckpartsandrepairs@gmail.com</a>
+                        </li>
+                        <li><i class="fa-solid fa-clock text-gold me-2"></i> EST. 2015</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container text-center text-gray small">
+            <p class="mb-1">&copy; 2015-2026 Tim Truck Parts and Repairs. Tous droits réservés.</p>
+            <p class="mb-0 text-muted">Taxes and fees are not included in the initial pricing agreed for the parts and shipping cost. This amount varies depending on the amount agreed for the parts & shipping, and is calculated by the cashier only.</p>
+        </div>
+    </footer>
+
+    <!-- Bouton Flottant (Appel direct sur mobile) -->
+    <a href="tel:+18656855944" class="floating-call d-lg-none" aria-label="Appeler l'atelier">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

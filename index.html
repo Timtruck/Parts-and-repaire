@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIM TRUCK - Parts and Repairs</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome (Icônes) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            /* Nouvelle charte colorielle : Noir, Gris, Jaune Or, Orange */
+            --bg-dark: #121212;
+            --bg-darker: #080808;
+            --card-dark: #1e1e1e;
+            --card-gray: #2d2d2d;
+            --accent-gold: #FFB800; /* Jaune Or */
+            --accent-orange: #E65C00; /* Orange */
+            --text-light: #f8f9fa;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Utilitaires couleurs texte */
+        .text-gold { color: var(--accent-gold) !important; }
+        .text-orange { color: var(--accent-orange) !important; }
+        .text-gray { color: var(--text-gray) !important; }
+        
+        /* Utilitaires couleurs fond */
+        .bg-gray { background-color: var(--card-gray) !important; }
+        .bg-orange { background-color: var(--accent-orange) !important; }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--bg-darker);
+            font-size: 0.85rem;
+            border-bottom: 1px solid #222;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-orange);
+        }
+
+        .nav-pills .nav-link {
+            color: #ccc;
+            border-radius: 20px;
+            padding: 6px 18px;
+            margin: 0 3px;
+            transition: 0.3s;
+        }
+
+        .nav-pills .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            background-color: var(--accent-orange);
+            color: #fff;
+        }
+
+        .btn-call-header {
+            background-color: var(--accent-gold);
+            color: var(--bg-darker);
+            font-weight: 900;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        
+        .btn-call-header:hover {
+            background-color: var(--accent-orange);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            position: relative;
+            min-height: 85vh;
+            background: linear-gradient(180deg, rgba(42, 41, 41, 0.363) 0%, rgba(31, 31, 31, 0.369) 100%), 
+                        url(madia/gen.jpeg) center/cover no-repeat;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+        }
+
+        .hero-title span {
+            color: var(--accent-gold);
+        }
+
+        .badge-location {
+            color: var(--accent-orange);
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            font-size: 0.85rem;
+        }
+
+        /* Action Buttons */
+        .btn-action {
+            padding: 12px 24px;
+            font-weight: 700;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: 0.3s;
+            border: none;
+        }
+
+        .btn-primary-theme { background-color: var(--accent-orange); color: white; }
+        .btn-primary-theme:hover { background-color: #cc5200; color: white; }
+
+        .btn-secondary-theme { background-color: var(--accent-gold); color: var(--bg-darker); }
+        .btn-secondary-theme:hover { background-color: #e6a600; color: var(--bg-darker); }
+
+        .btn-dark-custom { background-color: #2b2b2b; color: white; border: 1px solid #444; }
+        .btn-dark-custom:hover { background-color: #3b3b3b; color: white; border-color: var(--accent-gold); }
+
+        /* Floating Call Button for Mobile */
+        .floating-call {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--accent-orange);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(230, 92, 0, 0.5);
+            z-index: 1000;
+        }
+
+        @media (max-width: 768px) {
+            body{
+                font-size: 0.88rem;
+            }
+            .hero-title, h1 {
+                font-size: 1.4rem !important;
+                line-height: 1.2 !important;
+            }
+            h2{
+                font-size: 1rem !important;
+            }
+            p, .lead {
+                font-size: 0.70rem !important;
+            }
+
+            .top-bar{
+                font-size: 0.5rem;
+                text-align: center;
+            }
+            .navbar-brand img{
+                max-height: 45px !important;
+            }
+            .hero-buttons {
+                display: flex;
+                flex-direction: row !important;
+                flex-wrap: wrap !important;
+                justify-content: left !important;
+                gap: 8px !important;
+            }
+            .btn-action {
+                width: auto !important;
+                flex: 0 0 auto !important;
+                padding: 8px 14px !important;
+                font-size: 0.62rem !important;
+            }
+        }
+        
+        .carousel-img-wrapper {
+            position: relative;
+            height: 480px;
+        }
+
+        .carousel-img-wrapper img {
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-caption-custom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 20px;
+            background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.95) 100%);
+            color: #fff;
+        }
+        
+        .carousel-caption-custom h3 {
+            color: var(--accent-gold);
+        }
+
+        .carousel-control-prev-icon-custom,
+        .carousel-control-next-icon-custom {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(30, 30, 30, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-gold);
+            font-size: 1.2rem;
+            transition: 0.3s;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .carousel-control-prev-icon-custom:hover,
+        .carousel-control-next-icon-custom:hover {
+            background-color: var(--accent-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .thumbnail-btn {
+            height: 70px;
+            opacity: 0.5;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent !important;
+        }
+
+        .thumbnail-btn img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thumbnail-btn.active, .thumbnail-btn:hover {
+            opacity: 1;
+            border-color: var(--accent-orange) !important;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -1px;
+            color: var(--accent-gold);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+
+        .fw-black {
+            font-weight: 900;
+        }
+
+        .service-card {
+            height: 380px;
+            background-color: var(--card-dark);
+            border: 1px solid #333;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(255, 184, 0, 0.15);
+            border-color: var(--accent-gold);
+        }
+
+        .service-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .service-card:hover .service-card-img {
+            opacity: 0.4;
+        }
+
+        .service-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.222) 0%, rgba(18, 18, 18, 0.617) 90%);
+        }
+
+        .service-icon {
+            width: 45px;
+            height: 45px;
+            background-color: var(--accent-orange);
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .service-link {
+            color: var(--accent-gold) !important;
+            transition: color 0.2s ease;
+        }
+
+        .service-link:hover {
+            color: var(--accent-orange) !important;
+        }
+
+        .cta-banner-section {
+            background: url(madia/gen3.jpg) center/cover no-repeat;
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+        }
+
+        .cta-banner-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(18, 18, 18, 0.88);
+            z-index: 1;
+        }
+
+        .guarantee-icon-box {
+            width: 48px;
+            height: 48px;
+            background-color: rgba(255, 184, 0, 0.1);
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .review-card {
+            background-color: var(--card-dark);
+            border: 1px solid #333;
+            color: var(--text-light);
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .btn-nav-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: #333;
+            color: white;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .btn-nav-circle:hover {
+            background-color: var(--accent-orange);
+        }
+
+        .why-card {
+            background-color: var(--card-dark);
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+
+        .why-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-gold);
+        }
+
+        .why-number {
+            font-size: 2.5rem;
+            line-height: 1;
+            font-weight: 900;
+            color: var(--accent-gold);
+        }
+
+        .btn-dark-cta {
+            background-color: #1a1a1a;
+            color: #ffffff;
+            border: 1px solid var(--accent-gold);
+            transition: all 0.2s ease;
+        }
+
+        .btn-dark-cta:hover {
+            background-color: var(--accent-gold);
+            color: #000000;
+        }
+
+        .footer-link {
+            color: var(--text-gray) !important;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-gold) !important;
+        }
+
+        /* Styling Accordion FAQ Dark Theme */
+        .accordion-item {
+            background-color: var(--card-dark);
+            border: 1px solid #333;
+        }
+        .accordion-button {
+            background-color: var(--card-dark);
+            color: var(--text-light);
+        }
+        .accordion-button:not(.collapsed) {
+            color: var(--accent-gold);
+            background-color: #222;
+            box-shadow: none;
+        }
+        .accordion-button::after {
+            filter: invert(1);
+        }
+        .btn-whatsapp { background-color: #1ebe5d; color: white; }
+        .btn-whatsapp:hover { background-color: #1ebe5d; color: white; }
+
+        #preloader{
+
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-darker);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 99999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+        #preloader.fade-out {
+
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .preloader-content {
+            animation: pulseLogo 1.5s infinite alternate;
+        }
+
+        @keyframes pulseLogo {
+            0% { transform: scale(0.95); opacity: 0.8;}
+            100%{ transform: scale(1.05); opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="preloader-content text-center">
+            <h1 class="text-white fw-bold display-5 mb-1">TIM <span class="text-orange">TRUCK</span></h1>
+            <p class="text-gold tracking-widest text-uppercase small mb-4" style="letter-spacing: 3px;">Parts and Repairs</p>
+            <div class="spinner-border text-orange" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 1. Top Bar -->
+    <div class="top-bar py-2 text-muted d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center text-gray">
+            <div><i class="fa-solid fa-location-dot me-2 text-gold"></i> 105 Warehouse Rd | Oak Ridge, TN 37830 | United States</div>
+            <div><i class="fa-solid fa-clock me-2 text-orange"></i> EST - Pickup Truck Specialists</div>
+        </div>
+    </div>
+
+    <!-- 2. Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <div class="container">
+            <!-- Intégration du logo fourni -->
+            <a class="navbar-brand py-0" href="#">
+                <img src="IMG-20260907-WA0017_2.jpeg" alt="Tim Truck Parts and Repairs Logo" style="max-height: 60px; border-radius: 4px;">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="nav nav-pills my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="review.html">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FaQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Bouton d'appel avec le numéro du logo -->
+            <a href="tel:+18656855944" class="btn btn-call-header px-3 py-2 d-none d-lg-inline-block">
+                <i class="fa-solid fa-phone me-2"></i>(865) 685-5944
+            </a>
+            
+        </div>
+    </nav>
+
+    <!-- 3. Hero Section -->
+    <section class="hero-section">
+        <div class="container py-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <p class="badge-location text-uppercase mb-2">
+                        <i class="fa-solid fa-truck-pickup me-2"></i>Truck Specialists • Parts • Repairs • Service
+                    </p>
+                    
+                    <h1 class="hero-title mb-3 dail">
+                        TIM TRUCK <br>
+                        <span class="text-gold">PARTS AND REPAIRS</span>
+                    </h1>
+                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+                    <p class="lead text-light opacity-75 mb-4">
+                        Your pickup specialist since 2015. Spare parts, comprehensive repairs, and meticulous maintenance. Having trouble with your vehicle? Give us a call—we’ll take care of the rest.
+                    </p>
+
+                    <!-- Action Buttons -->
+                    <div class="hero-buttons d-flex flex-wrap gap-3 mb-4">
+                        <a href="tel:+18656855944" class="btn btn-action btn-primary-theme">
+                            <i class="fa-solid fa-phone"></i> <span class="d-done d-md-inline ms-2">Call (865) 685-5944</span>
+                        </a>
+                        <a href="#devis" class="btn btn-action btn-secondary-theme">
+                            <i class="fa-solid fa-file-invoice"></i> <span class="d-done d-md-inline ms-2">Quick quote</span>
+                        </a>
+                        <a href="https://wa.me/18656855944" target="_blank" class="btn btn-action btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp"></i> <span class="d-done d-md-inline ms-2">WhatsApp</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECTION SHOWCASE / NOS RÉALISATIONS -->
+    <section class="py-5" style="background-color: var(--bg-darker);">
+        <div class="container">
+            <div class="text-center mb-4">
+                <span class="text-orange fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                    SHOWCASE
+                </span>
+                <h2 class="display-5 fw-bold text-white mt-1">
+                    Workshops & Equipment
+                </h2>
+            </div>
+
+            <!-- Carrousel Principal -->
+            <div id="showcaseCarousel" class="carousel slide custom-carousel rounded-4 overflow-hidden mb-3 shadow-lg" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="carousel-img-wrapper">
+                            <img src="madia/met.jpg" class="d-block w-100" alt="Réparation Moteur">
+                            <div class="carousel-caption-custom">
+                                <h3 class="fw-bold mb-1">Parts & Repairs</h3>
+                                <p class="mb-0 text-light opacity-75">Precision work on pickup trucks and heavy-duty commercial vehicles.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-img-wrapper">
+                            <img src="madia/gen4.jpg" class="d-block w-100" alt="Freinage et Amortisseurs">
+                            <div class="carousel-caption-custom">
+                                <h3 class="fw-bold mb-1">Braking & Suspension Systems</h3>
+                                <p class="mb-0 text-light opacity-75">Reinforced parts to withstand your truck's loads.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-img-wrapper">
+                            <img src="madia/meta1.jpg" class="d-block w-100" alt="Électricité et Climatisation">
+                            <div class="carousel-caption-custom">
+                                <h3 class="fw-bold mb-1">Electronic Diagnostics</h3>
+                                <p class="mb-0 text-light opacity-75">Fault diagnosis for recent and older models.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="carousel-item">
+                        <div class="carousel-img-wrapper">
+                            <img src="madia/meta4.jpg" class="d-block w-100" alt="light et Climatisation">
+                            <div class="carousel-caption-custom">
+                                <h3 class="fw-bold mb-1">lighting</h3>
+                                <p class="mb-0 text-light opacity-75">Fault diagnosis for recent and older models.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#showcaseCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon-custom"><i class="fa-solid fa-chevron-left"></i></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#showcaseCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon-custom"><i class="fa-solid fa-chevron-right"></i></span>
+                </button>
+            </div>
+
+            <!-- Miniatures -->
+            <div class="row g-2 justify-content-center">
+                <div class="col-4 col-md-2">
+                    <button type="button" data-bs-target="#showcaseCarousel" data-bs-slide-to="0" class="active thumbnail-btn w-100 p-0 border-0 rounded-3 overflow-hidden">
+                        <img src="madia/met.jpg" class="img-fluid" alt="Moteur">
+                    </button>
+                </div>
+                <div class="col-4 col-md-2">
+                    <button type="button" data-bs-target="#showcaseCarousel" data-bs-slide-to="1" class="thumbnail-btn w-100 p-0 border-0 rounded-3 overflow-hidden">
+                        <img src="madia/gen4.jpg" class="img-fluid" alt="Freinage">
+                    </button>
+                </div>
+                <div class="col-4 col-md-2">
+                    <button type="button" data-bs-target="#showcaseCarousel" data-bs-slide-to="2" class="thumbnail-btn w-100 p-0 border-0 rounded-3 overflow-hidden">
+                        <img src="madia/meta1.jpg" class="img-fluid" alt="Climatisation">
+                    </button>
+                </div>
+                <div class="col-4 col-md-2">
+                    <button type="button" data-bs-target="#showcaseCarousel" data-bs-slide-to="3" class="thumbnail-btn w-100 p-0 border-0 rounded-3 overflow-hidden">
+                        <img src="madia/meta4.jpg" class="img-fluid" alt="Climatisation">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. BANDEAU DE CHIFFRES CLÉS -->
+    <section class="stats-bar py-4 bg-gray border-top border-bottom border-dark">
+        <div class="container">
+            <div class="row text-center text-white g-4">
+                <div class="col-6 col-md-3">
+                    <div class="stat-number fw-black">2015</div>
+                    <div class="stat-label text-uppercase font-small text-gray">Year Established</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-number fw-black">100%</div>
+                    <div class="stat-label text-uppercase font-small text-gray">Pickup Specialist</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-number fw-black"><i class="fa-solid fa-gear"></i></div>
+                    <div class="stat-label text-uppercase font-small text-gray">Parts & Services</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-number fw-black">4.9 ★</div>
+                    <div class="stat-label text-uppercase font-small text-gray">Customer Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. SECTION NOS SERVICES -->
+    <section id="services" class="py-5 text-light" style="background-color: var(--bg-dark);">
+        <div class="container py-4 text-center">
+            <span class="text-gold fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                SERVICE & REPAIRS
+            </span>
+            <h2 class="display-4 fw-black text-uppercase mt-2 mb-4 text-white">
+                Specialized Maintenance for Your Truck
+            </h2>
+            <p class="lead text-gray mx-auto" style="max-width: 750px;">
+                From simple oil changes to the replacement of major components, we apply our expertise to ensure your vehicle's durability and performance.
+            </p>
+        </div>
+    </section>
+
+    <!-- GRILLE DE SERVICES -->
+    <section class="pb-5" style="background-color: var(--bg-dark);">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Carte 1 -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="service-card rounded-4 overflow-hidden position-relative">
+                        <img src="madia/meta.jpg" alt="Truck Parts" class="service-card-img">
+                        <div class="service-card-overlay p-4 d-flex flex-column justify-content-end">
+                            <div class="service-icon mb-2"><i class="fa-solid fa-cogs"></i></div>
+                            <h3 class="h4 fw-bold text-white mb-2">Truck Parts</h3>
+                            <p class="text-light opacity-75 small mb-3">Extensive inventory of quality spare parts for all major pickup truck models..</p>
+                            <a href="tel:+18656855944" class="service-link text-decoration-none fw-bold small">
+                                Contact us <i class="fa-solid fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 2 -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="service-card rounded-4 overflow-hidden position-relative">
+                        <img src="madia/gen1.jpeg" alt="Entretien & Vidange" class="service-card-img">
+                        <div class="service-card-overlay p-4 d-flex flex-column justify-content-end">
+                            <div class="service-icon mb-2 bg-orange"><i class="fa-solid fa-oil-can"></i></div>
+                            <h3 class="h4 fw-bold text-white mb-2">Routine Service</h3>
+                            <p class="text-light opacity-75 small mb-3">Fluid and filter replacement and a comprehensive check-up to prevent breakdowns..</p>
+                            <a href="tel:+18656855944" class="service-link text-decoration-none fw-bold small">
+                                contact us <i class="fa-solid fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 3 -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="service-card rounded-4 overflow-hidden position-relative">
+                        <img src="madia/meta3.jpg" alt="Freinage & Sécurité" class="service-card-img">
+                        <div class="service-card-overlay p-4 d-flex flex-column justify-content-end">
+                            <div class="service-icon mb-2"><i class="fa-solid fa-shield-halved"></i></div>
+                            <h3 class="h4 fw-bold text-white mb-2">Braking & Discs</h3>
+                            <p class="text-light opacity-75 small mb-3">Maintenance of heavy-duty braking systems designed for heavy loads.</p>
+                            <a href="tel:+18656855944" class="service-link text-decoration-none fw-bold small">
+                            Contact us <i class="fa-solid fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carte 4 -->
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="service-card rounded-4 overflow-hidden position-relative">
+                        <img src="madia/cha1.png" alt="Mécanique Lourde" class="service-card-img">
+                        <div class="service-card-overlay p-4 d-flex flex-column justify-content-end">
+                            <div class="service-icon mb-2"><i class="fa-solid fa-wrench"></i></div>
+                            <h3 class="h4 fw-bold text-white mb-2">Full Repairs</h3>
+                            <p class="text-light opacity-75 small mb-3">Engine, transmission, differential, and suspension. Major, complex repairs..</p>
+                            <a href="tel:+18656855944" class="service-link text-decoration-none fw-bold small">
+                             contact us<i class="fa-solid fa-arrow-right ms-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. BANNIÈRE CTA / ENGAGEMENT ATELIER -->
+    <section class="cta-banner-section position-relative py-5 border-top border-bottom border-warning">
+        <div class="container py-4 text-center position-relative z-2">
+            <h2 class="display-4 fw-black text-white text-uppercase mb-3">
+                Built For Trucks. Trusted Since 2015.
+            </h2>
+            <p class="lead text-light opacity-75 mx-auto mb-4" style="max-width: 750px;">
+               Our team of skilled mechanics handles your repairs and parts installation right in our workshop. Entrust your truck to us and get back on the road with complete peace of mind.
+            </p>
+            <a href="tel:+18656855944" class="btn btn-primary-theme btn-action fs-5 px-4 py-3">
+                <i class="fa-solid fa-wrench me-2"></i> Book an Appointment (865) 685-5944
+            </a>
+        </div>
+        <div class="cta-banner-overlay"></div>
+    </section>
+
+    <!-- 8. BARRE DES 4 GARANTIES -->
+    <section class="guarantees-bar py-5" style="background-color: var(--bg-darker);">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="guarantee-icon-box flex-shrink-0"><i class="fa-solid fa-truck-pickup"></i></div>
+                        <div>
+                            <h4 class="h6 fw-bold text-white mb-1">Pickup Specialistes</h4>
+                            <p class="text-gray small mb-0">Expertise dedicated to trucks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="guarantee-icon-box flex-shrink-0"><i class="fa-solid fa-shield-check"></i></div>
+                        <div>
+                            <h4 class="h6 fw-bold text-white mb-1">Quality Guaranteed</h4>
+                            <p class="text-gray small mb-0">Inspected and robust parts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="guarantee-icon-box flex-shrink-0"><i class="fa-solid fa-headset"></i></div>
+                        <div>
+                            <h4 class="h6 fw-bold text-white mb-1">Expert Support</h4>
+                            <p class="text-gray small mb-0">Connect with industry professionals..</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="guarantee-icon-box flex-shrink-0"><i class="fa-solid fa-award"></i></div>
+                        <div>
+                            <h4 class="h6 fw-bold text-white mb-1">Established in 2015</h4>
+                            <p class="text-gray small mb-0">Years of solid experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. SECTION AVIS CLIENTS -->
+    <section id="avis" class="py-5 text-light" style="background: linear-gradient(180deg, rgba(18, 18, 18, 0.622) 0%, rgba(18, 18, 18, 0.706) 90%), url('https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=600&q=80' ) center/cover no-repeat;">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-orange fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                    CUSTOMER REVIEWS
+                </span>
+                <h2 class="display-4 fw-black text-uppercase mt-1 mb-3 text-white">
+                    What Our Customers Say
+                </h2>
+                
+                <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+                    <div class="text-gold fs-4">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                </div>
+                <p class="text-gray fw-semibold mb-0">
+                    <strong class="text-white fs-5">4.9 / 5</strong> · Hundreds of satisfied motorists
+                </p>
+            </div>
+
+            <div class="row g-4 mb-4">
+                <div class="col-12 col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-gold mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">
+                                « Impeccable service for my truck! They had the parts in stock, and the repair was done quickly. True specialists. »
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Marc K.</h3>
+                            <small class="text-orange">Ford F-150</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-gold mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">
+                                « Very professional. I found the exact parts I needed for my suspension. Welcoming team. »
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Arnaud T.</h3>
+                            <small class="text-orange">Chevrolet Silverado</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="text-gold mb-3">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">
+                                « The quote was honored, with no unpleasant surprises. The maintenance was carried out to a high professional standard. I recommend Tim Truck 100%.. »
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Sandrine M.</h3>
+                            <small class="text-orange">Toyota Tacoma</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center gap-2 mb-4">
+                <button class="btn btn-nav-circle" aria-label="Avis précédent"><i class="fa-solid fa-chevron-left"></i></button>
+                <button class="btn btn-nav-circle" aria-label="Avis suivant"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. SECTION POURQUOI NOUS CHOISIR -->
+    <section class="py-5 border-top border-secondary" style="background-color: var(--bg-darker);">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-gold fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                    Why TIM TRUCK
+                </span>
+                <h2 class="display-4 fw-black text-white text-uppercase mt-1 mb-3">
+                    The Specialist's Advantage
+                </h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12 col-md-6">
+                    <div class="why-card p-4 rounded-4 h-100 d-flex align-items-start gap-4">
+                        <span class="why-number">01</span>
+                        <div>
+                            <h3 class="h5 fw-bold text-white mb-2">Suitable parts</h3>
+                            <p class="text-gray small mb-0">As parts specialists, we source the best OEM and reinforced parts for pickup trucks..</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="why-card p-4 rounded-4 h-100 d-flex align-items-start gap-4">
+                        <span class="why-number">02</span>
+                        <div>
+                            <h3 class="h5 fw-bold text-white mb-2">Transparent pricing</h3>
+                            <p class="text-gray small mb-0">Accurate diagnostics and a confirmed quote before any work begins. No surprises.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="why-card p-4 rounded-4 h-100 d-flex align-items-start gap-4">
+                        <span class="why-number">03</span>
+                        <div>
+                            <h3 class="h5 fw-bold text-white mb-2">Qualified Technicians</h3>
+                            <p class="text-gray small mb-0">Our team receives continuous training on the mechanical and electronic specifics of this type of vehicle..</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="why-card p-4 rounded-4 h-100 d-flex align-items-start gap-4">
+                        <span class="why-number">04</span>
+                        <div>
+                            <h3 class="h5 fw-bold text-white mb-2">State-of-the-art equipment</h3>
+                            <p class="text-gray small mb-0">Workshop fully equipped with heavy-duty machinery (vehicle lifts, diagnostic tools) to accommodate any pickup truck..</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 11. SECTION À PROPOS -->
+    <section id="a-propos" class="py-5 bg-gray text-light">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5 position-relative">
+                    <div class="position-absolute bg-orange rounded-circle" style="width: 150px; height: 150px; top: -20px; left: -20px; z-index: 1;"></div>
+                    <img src="madia/cap.png" alt="Mécanicien Expert" class="img-fluid rounded-4 position-relative shadow-lg" style="z-index: 2;">
+                </div>
+                
+                <div class="col-lg-7">
+                    <span class="text-orange fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                        TEAM TIM TRUCK
+                    </span>
+                    <h2 class="display-4 fw-black text-uppercase mt-2 mb-4 text-white">
+                        Established in 2015
+                    </h2>
+                    
+                    <p class="lead text-gray mb-4">
+                        Founded with an unwavering passion for robust mechanics, the team of <strong>Tim Truck Parts and Repairs</strong> is your trusted partner. For over a decade, we have made it a point of honor to provide impeccable service.
+                    </p>
+                    
+                    <p class="text-gray mb-4 opacity-75">
+                        « Our mission is clear: to ensure your pickup is always ready to tackle any challenge. Our reputation is built on high standards and attention to detail. »
+                    </p>
+
+                    <a href="tel:+18656855944" class="btn btn-secondary-theme btn-action">
+                        <i class="fa-solid fa-phone"></i> Book an appointment with a technician
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 12. SECTION FAQ -->
+    <section id="faq" class="py-5" style="background-color: var(--bg-dark);">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-gold fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                   FREQUENTLY ASKED QUESTIONS
+                </span>
+                <h2 class="display-5 fw-black text-white text-uppercase mt-1 mb-3">
+                    Need to know more?
+                </h2>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item mb-3 rounded border-0 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button fw-bold py-3 fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    Do you service all pickup truck brands?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-gray bg-gray">
+                                    Yes, our workshop specializes in these makes (Ford, Chevrolet, Ram, Toyota, Nissan, etc.). We have access to specific parts from all major manufacturers.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item mb-3 rounded border-0 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold py-3 fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    Do you sell spare parts without installation?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-gray bg-gray">
+                                    Absolutely. As parts specialists, you can order and purchase your parts directly from us, whether you are a professional or a private customer.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="accordion-item mb-3 rounded border-0 overflow-hidden shadow-sm">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed fw-bold py-3 fs-5" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Do you offer free quotes?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body text-gray bg-gray">
+                                    Yes. You can call us directly at (865) 685-5944 or stop by the garage at 105 Warehouse Rd for an assessment of your needs.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 13. SECTION CONTACT ET LOCALISATION (DEVIS) -->
+    <section id="contact" class="py-5" style="background-color: var(--bg-darker);">
+        <div class="container py-4">
+            <div class="row g-5">
+                <div class="col-lg-5">
+                    <span class="text-orange fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                        CONTACTER US
+                    </span>
+                    <h2 class="display-5 fw-black text-white text-uppercase mt-2 mb-4">
+                        Stop by the workshop.
+                    </h2>
+                    
+                    <div class="d-flex align-items-start gap-3 mb-4">
+                        <div class="text-gold fs-3"><i class="fa-solid fa-location-dot"></i></div>
+                        <div>
+                            <h4 class="h5 fw-bold text-white mb-1">Our Adress</h4>
+                            <p class="text-gray mb-0">105 Warehouse Rd<br>Oak Ridge, TN 37830<br>United States</p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3 mb-4">
+                        <div class="text-gold fs-3"><i class="fa-solid fa-phone"></i></div>
+                        <div>
+                            <h4 class="h5 fw-bold text-white mb-1">Telephone</h4>
+                            <p class="text-gray mb-0">Call <a href="tel:+18656855944" class="text-gold fw-bold text-decoration-none">(865) 685-5944</a></p>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-start gap-3 mb-4">
+                        <div class="text-gold fs-3"><i class="fa-solid fa-clock"></i></div>
+                        <div>
+                            <h4 class="h5 fw-bold text-white mb-1">Opening Hours</h4>
+                            <p class="text-gray mb-0">Monday - Friday : 08h00 - 18h00<br>Saturday : 09h00 - 14h00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-7" id="devis">
+                    <div class="bg-gray p-5 rounded-4 border border-dark shadow-lg">
+                        <h3 class="h4 fw-bold text-white mb-4">Request a Quote or Appointment</h3>
+                        <form>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control bg-dark border-secondary text-white py-2" placeholder="Your Name*" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control bg-dark border-secondary text-white py-2" placeholder="Your Telephone number*" required>
+                                </div>
+                                <div class="col-12">
+                                    <input type="text" class="form-control bg-dark border-secondary text-white py-2" placeholder="Make & Model of your pickup truck">
+                                </div>
+                                <div class="col-12">
+                                    <textarea class="form-control bg-dark border-secondary text-white py-2" rows="4" placeholder="Describe your needs (parts or repairs)...*" required></textarea>
+                                </div>
+                                <div class="col-12 mt-4">
+                                    <a href="mailto:Timtruckpartsandrepairs@gmail.com" class="btn btn-primary-theme btn-action w-100 justify-content-center">
+                                        Send and request<i class="fa-solid fa-paper-plane ms-2"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 14. PRE-FOOTER MAP -->
+    <div class="w-100" style="height: 350px;">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3229.071850125439!2d-84.2255788!3d36.0145229!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x885c328d0eb4b7e1%3A0xc3f8ec47d2f4ef11!2s105%20Warehouse%20Rd%2C%20Oak%20Ridge%2C%20TN%2037830%2C%20%C3%89tats-Unis!5e0!3m2!1sfr!2s!4v1700000000000!5m2!1sfr!2s" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <!-- 15. FOOTER -->
+    <footer class="py-5" style="background-color: var(--bg-dark);">
+        <div class="container border-bottom border-secondary pb-4 mb-4">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="IMG-20260907-WA0017_2.jpeg" alt="Tim Truck Parts and Repairs Logo" style="max-height: 50px; border-radius: 4px;" class="mb-3">
+                    <p class="text-gray mb-4 pe-lg-4">
+                        Pickup specialists since 2015. Entrust your vehicle to an expert team that understands the demands of heavy-duty utility vehicles.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-nav-circle bg-gray text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-nav-circle bg-gray text-white"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="text-white fw-bold mb-4">Services Principaux</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                        <li><a href="tel:+18656855944" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Parts Sales</a></li>
+                        <li><a href="tel:+18656855944" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Maintenance & Oil Change</a></li>
+                        <li><a href="tel:+18656855944" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Heavy-Duty Mechanics</a></li>
+                        <li><a href="tel:+18656855944" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Braking & Suspension</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="text-white fw-bold mb-4">Contact</h5>
+                    <ul class="list-unstyled text-gray mb-0">
+                        <li class="mb-3"><i class="fa-solid fa-location-dot text-gold me-2"></i> 105 Warehouse Rd, Oak Ridge, TN 37830</li>
+                        <li class="mb-3"><i class="fa-solid fa-phone text-gold me-2"></i> <a href="tel:(865) 685-5944" style="color: white; text-decoration: none;">(865) 685-5944</a></li>
+                        <li class="mb-3 d-flex gap-2">
+                            <i class="fa-solid fa-envelope mt-1" style="color: var(--accent-gold);"></i> <a href="mailto:Timtruckpartsandrepairs@gmail.com" style="color: white; text-decoration: none">Timtruckpartsandrepairs@gmail.com</a>
+                        </li>
+                        <li><i class="fa-solid fa-clock text-gold me-2"></i> EST. 2015</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container text-center text-gray small">
+            <p class="mb-0">&copy; 2015-2026 Tim Truck Parts and Repairs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- 16. Bouton Flottant (Appel direct sur mobile) -->
+    <a href="tel:+18656855944" class="floating-call d-lg-none" aria-label="Appeler l'atelier">
+        <i class="fa-solid fa-phone"></i>
+    </a>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Script pour la gestion de l'état actif des miniatures du carrousel
+        document.addEventListener('DOMContentLoaded', function () {
+            var myCarousel = document.getElementById('showcaseCarousel');
+            var thumbnailBtns = document.querySelectorAll('.thumbnail-btn');
+
+            myCarousel.addEventListener('slide.bs.carousel', function (e) {
+                thumbnailBtns.forEach(btn => btn.classList.remove('active'));
+                thumbnailBtns[e.to].classList.add('active');
+            });
+        });
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(function() {
+                preloader.classList.add('fade-out');
+            }, 400);
+        });
+    </script>
+</body>
+</html>

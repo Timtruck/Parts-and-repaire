@@ -1,0 +1,1300 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Reviews - TIM TRUCK - Parts and Repairs</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome (Icônes) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #121212;
+            --bg-darker: #080808;
+            --card-dark: #1e1e1e;
+            --card-gray: #2d2d2d;
+            --accent-gold: #FFB800;
+            --accent-orange: #E65C00;
+            --text-light: #f8f9fa;
+            --text-gray: #a0a0a0;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .text-gold { color: var(--accent-gold) !important; }
+        .text-orange { color: var(--accent-orange) !important; }
+        .text-gray { color: var(--text-gray) !important; }
+        
+        .bg-gray { background-color: var(--card-gray) !important; }
+        .bg-orange { background-color: var(--accent-orange) !important; }
+
+        /* Top Bar */
+        .top-bar {
+            background-color: var(--bg-darker);
+            font-size: 0.85rem;
+            border-bottom: 1px solid #222;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--accent-orange);
+        }
+
+        .nav-pills .nav-link {
+            color: #ccc;
+            border-radius: 20px;
+            padding: 6px 18px;
+            margin: 0 3px;
+            transition: 0.3s;
+        }
+
+        .nav-pills .nav-link:hover {
+            color: var(--accent-gold);
+        }
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+            background-color: var(--accent-orange);
+            color: #fff;
+        }
+
+        .btn-call-header {
+            background-color: var(--accent-gold);
+            color: var(--bg-darker);
+            font-weight: 900;
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+        
+        .btn-call-header:hover {
+            background-color: var(--accent-orange);
+            color: white;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(180deg, rgba(18, 18, 18, 0.85) 0%, rgba(18, 18, 18, 0.95) 100%), 
+                        url('madia/gen.jpeg') center/cover no-repeat;
+            padding: 80px 0 50px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        /* Review Cards */
+        .review-card {
+            background-color: var(--card-dark);
+            border: 1px solid #333;
+            color: var(--text-light);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-gold);
+        }
+
+        .filter-btn {
+            background-color: var(--card-dark);
+            color: var(--text-light);
+            border: 1px solid #444;
+            border-radius: 20px;
+            padding: 6px 16px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background-color: var(--accent-orange);
+            color: white;
+            border-color: var(--accent-orange);
+        }
+
+        .footer-link {
+            color: var(--text-gray) !important;
+            transition: color 0.2s ease;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-gold) !important;
+        }
+
+        .btn-nav-circle {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background-color: #333;
+            color: white;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .btn-nav-circle:hover {
+            background-color: var(--accent-orange);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Top Bar -->
+    <div class="top-bar py-2 text-muted d-none d-md-block">
+        <div class="container d-flex justify-content-between align-items-center text-gray">
+            <div><i class="fa-solid fa-location-dot me-2 text-gold"></i> 105 Warehouse Rd | Oak Ridge, TN 37830 | United States</div>
+            <div><i class="fa-solid fa-clock me-2 text-orange"></i> EST - Pickup Truck Specialists</div>
+        </div>
+    </div>
+
+    <!-- 2. Navbar -->
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark">
+        <div class="container">
+            <a class="navbar-brand py-0" href="index.html">
+                <img src="IMG-20260907-WA0017_2.jpeg" alt="Tim Truck Parts and Repairs Logo" style="max-height: 60px; border-radius: 4px;">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="nav nav-pills my-2 my-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="review.html">Reviews</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FaQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <a href="tel:+18656855944" class="btn btn-call-header px-3 py-2 d-none d-lg-inline-block">
+                <i class="fa-solid fa-phone me-2"></i>(865) 685-5944
+            </a>
+        </div>
+    </nav>
+
+    <!-- 3. Page Header -->
+    <header class="page-header text-center">
+        <div class="container">
+            <span class="text-orange fw-bold text-uppercase tracking-wider" style="font-size: 0.85rem; letter-spacing: 2px;">
+                VERIFIED FEEDBACK
+            </span>
+            <h1 class="display-4 fw-bold text-white text-uppercase mt-2 mb-3">
+                All Customer Reviews (<span class="text-gold">128</span>)
+            </h1>
+            <div class="d-flex align-items-center justify-content-center gap-2 mb-2 text-gold fs-4">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="text-gray mb-0">Average rating of <strong class="text-white">4.9 / 5</strong> based on 128 verified customer interactions since 2015.</p>
+        </div>
+    </header>
+
+    <!-- 4. Filters & Reviews Grid -->
+    <section class="py-5">
+        <div class="container">
+            <!-- Filter Options -->
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-5">
+                <button class="filter-btn active">All Reviews (309)</button>
+                <button class="filter-btn">5 Stars (115)</button>
+                <button class="filter-btn">4 Stars (10)</button>
+                <button class="filter-btn">Ford F-150 / SuperDuty</button>
+                <button class="filter-btn">Chevrolet Silverado</button>
+                <button class="filter-btn">RAM Trucks</button>
+            </div>
+
+            <!-- Grid of Comments (Simulating a rich directory of feedback) -->
+            <div class="row g-4">
+                <!-- Review 1 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 days ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Absolute lifesaver! They had the exact replacement transmission part for my Ford F-250 in stock when no one else in Oak Ridge did. Fast installation and fair pricing. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Jonathan R.</h3>
+                            <small class="text-orange">Ford F-250 Owner</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 week ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Professionalism at its finest. Brought my Silverado in for heavy suspension checks. The mechanics really know their stuff about pickup trucks. Highly recommended! »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Marcus Vance</h3>
+                            <small class="text-orange">Chevrolet Silverado</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 wekk ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« just repairs the are several pro »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">william O.</h3>
+                            <small class="text-orange">Ford F-150 EcoBoost</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">3 week ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« ok no one to say »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Brenda roye Vance</h3>
+                            <small class="text-orange">Chevrolet Silverado</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 weeks ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Clean workshop, straightforward quotes, and no hidden surprises on the final invoice. It's rare to find such honest truck mechanics nowadays. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Derrick L.</h3>
+                            <small class="text-orange">RAM 1500</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 4 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">3 weeks ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Great stock of OEM parts. Picked up brake pads and rotors for my Tacoma. The team gave me helpful installation tips too. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Kevin S.</h3>
+                            <small class="text-orange">Toyota Tacoma</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 5 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 month ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Routine oil change and complete filter service handled efficiently. Fast turnaround time so I could get back on job sites quickly. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Brian H.</h3>
+                            <small class="text-orange">GMC Sierra</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 6 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                                <small class="text-gray">1 month ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Very solid work on my steering column repair. Took slightly longer than expected due to shipping delays on a rare component, but communication was clear throughout. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Alan P.</h3>
+                            <small class="text-orange">Nissan Titan</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 7 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Tim Truck has been looking after my utility fleet since 2018. Consistency and reliability define their workshop. Top-tier service! »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Robert M.</h3>
+                            <small class="text-orange">Fleet Manager</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 8 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Outstanding diagnostic work. They found an electrical glitch that two other garages missed completely. Will always bring my truck here from now on. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Chris W.</h3>
+                            <small class="text-orange">Ford Ranger</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 9 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">3 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« i think i have do a good choices »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Jason B.</h3>
+                            <small class="text-orange">Ram 2500 Heavy Duty</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 10 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">3 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Quick diagnosis and replacement of my EGR valve. Fair price and great communication throughout the entire process. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Ethan K.</h3>
+                            <small class="text-orange">GMC Canyon</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 11 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">4 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« They know EcoBoost engines inside and out. Fixed my turbo lag issue quickly when other shops scratched their heads. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Tyler P.</h3>
+                            <small class="text-orange">Ford F-150 EcoBoost</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 12 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">4 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Needed heavy-duty suspension bushings replaced. Clean work, professional setup, and my truck drives like brand new now. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Samantha W.</h3>
+                            <small class="text-orange">Ram Rebel</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 13 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                                <small class="text-gray">5 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Great stock of filters and specific fluids. I do most routine maintenance myself, and they always have what I need on the shelf. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Gary T.</h3>
+                            <small class="text-orange">Chevrolet Colorado</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 14 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">6 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Hard to find a local shop properly equipped for heavy dually trucks, but Tim Truck handled my rear axle service with zero issues. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Travis G.</h3>
+                            <small class="text-orange">Ford Super Duty F-350</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 15 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">6 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Extremely honest mechanics. They told me a component didn't need replacing yet instead of trying to upsell me. Total respect and loyalty earned! »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Nathan E.</h3>
+                            <small class="text-orange">Toyota Tundra</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 16 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">7 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Outstanding service on my cooling system. They replaced the radiator and water pump ahead of schedule. Great workshop! »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Kyle D.</h3>
+                            <small class="text-orange">Ram 3500 Dually</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 17 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">8 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Finding reliable OEM parts for an older truck used to be a headache until I found Tim Truck. Their inventory is impressive. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Aaron W.</h3>
+                            <small class="text-orange">Ford F-250 (2011)</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 18 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                                <small class="text-gray">8 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Solid brake service. Dropped it off in the morning, picked it up by the afternoon. Fair labor rates. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Justin C.</h3>
+                            <small class="text-orange">Chevrolet Silverado 1500</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 19 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">9 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« They installed a new leveling kit and alignment on my truck. Drives straight as an arrow now. Excellent workmanship. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Marcus P.</h3>
+                            <small class="text-orange">Toyota Tacoma TRD</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 20 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">10 months ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Super helpful staff at the counter. They looked up the exact part number I needed using my VIN without any fuss. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Eric S.</h3>
+                            <small class="text-orange">GMC Sierra 2500HD</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 21 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Best heavy truck mechanics in the Oak Ridge area. Professional, transparent, and experienced with diesel engines. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Patrick L.</h3>
+                            <small class="text-orange">Ford F-450 Super Duty</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 22 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Swapped my old alternator and starter motor here. In and out in under two hours. Fantastic service! »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Lucas M.</h3>
+                            <small class="text-orange">Ram 1500 Classic</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 23 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Top-tier customer support. They ordered a specific custom grille for my truck and installed it cleanly. Very satisfied. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Benjamin K.</h3>
+                            <small class="text-orange">Toyota Tundra Limited</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 24 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Professional diagnostic on my transmission slip. Honest advice on whether to rebuild or replace. Highly appreciate the integrity. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Sean R.</h3>
+                            <small class="text-orange">Ford F-150 Lariat</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 25 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Quality OEM replacement parts always available. Whenever I need maintenance filters, this is the only spot I visit in town. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Anthony D.</h3>
+                            <small class="text-orange">Chevrolet Colorado ZR2</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 26 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Great mechanics who actually specialize in trucks instead of treating them like regular sedans. Huge difference in quality. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Matthew H.</h3>
+                            <small class="text-orange">GMC Sierra Denali</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 27 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Impeccable alignment and wheel balancing done on my lifted truck. Drives smooth on the highway now. Thanks Tim! »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Tyler B.</h3>
+                            <small class="text-orange">Ram 2500 Power Wagon</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 28 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Swapped out my failing battery and alternator on short notice. Very efficient and professional service. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Nathaniel C.</h3>
+                            <small class="text-orange">Ford F-150</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 29 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Good prices on heavy-duty brake pads and rotors. Picked them up directly from the counter same day. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Derek F.</h3>
+                            <small class="text-orange">Chevrolet Silverado</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 30 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Regular maintenance always done right. They check all fluids and points without cutting corners. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Oliver J.</h3>
+                            <small class="text-orange">Ram 1500</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 31 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Fixed my steering rattle that was driving me crazy. Highly knowledgeable mechanics when it comes to trucks. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Gabriel N.</h3>
+                            <small class="text-orange">GMC Sierra</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 32 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Great stock of performance and replacement exhaust components. Friendly team ready to assist. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Caleb P.</h3>
+                            <small class="text-orange">Toyota Tundra</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 33 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Outstanding service handling my heavy-duty commercial truck needs. Dependable partner for local businesses. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Brad K.</h3>
+                            <small class="text-orange">Ford Super Duty F-250</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 34 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Excellent service on my suspension lift kit. The ride quality is so much better now on rough terrain. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Caleb M.</h3>
+                            <small class="text-orange">Ford F-150</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 35 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Fast turn-around time for an oil and filter change. In and out during my lunch break. Highly efficient! »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Logan S.</h3>
+                            <small class="text-orange">Ram 1500</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 36 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Great inventory of heavy-duty trailer hitches and wiring accessories. Found exactly what I needed. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Henry V.</h3>
+                            <small class="text-orange">Chevy Silverado 2500</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 37 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Professional staff who helped me diagnose an annoying dashboard rattle. Turned out to be a loose heat shield. Fixed in minutes. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Wyatt B.</h3>
+                            <small class="text-orange">Toyota Tacoma</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 38 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Top-notch diagnostics. They saved me from buying an expensive part I didn't actually need. Honesty goes a long way. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Julian W.</h3>
+                            <small class="text-orange">GMC Sierra</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 39 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Needed a complete brake overhaul on my heavy hauler. The prices were fair and performance is stellar. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Owen T.</h3>
+                            <small class="text-orange">Ford Super Duty</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 40 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Clean facility, professional mechanics, and clear estimates before any work starts. Will return for sure. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Connor P.</h3>
+                            <small class="text-orange">Nissan Titan</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 41 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Good selection of replacement parts in stock. Picked up a new serpentine belt and tensioner pulley same day. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Luke H.</h3>
+                            <small class="text-orange">Ram Rebel</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 42 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Excellent customer service. They helped load heavy truck bed liners directly into my vehicle. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Isaac D.</h3>
+                            <small class="text-orange">Toyota Tundra</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 43 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Swapped out my faulty spark plugs and ignition coils. Engine runs smooth as silk now. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Gabriel F.</h3>
+                            <small class="text-orange">Ford Ranger</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 44 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Reliable repairs and solid advice on maintenance schedules for mid-size pickups. Very professional team. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Jack K.</h3>
+                            <small class="text-orange">Chevrolet Colorado</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 45 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                                <small class="text-gray">1 year ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Great location in Oak Ridge with friendly technicians. They take care of your truck like it's their own. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Leo R.</h3>
+                            <small class="text-orange">GMC Canyon</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 46 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Replaced a leaky radiator in no time. Fair pricing on parts and great labor warranties. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Miles J.</h3>
+                            <small class="text-orange">Ford F-250</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 47 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Heavy duty suspension work done to perfection. My truck handles heavy trailer loads without sagging now. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Nolan B.</h3>
+                            <small class="text-orange">Ram 3500</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 48 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Quick routine maintenance service. Professional counter staff who know vehicle parts by heart. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Asher C.</h3>
+                            <small class="text-orange">Chevy Silverado 1500</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 49 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Awesome alignment work after installing off-road tires. Drives straight and true at highway speeds. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Ezekiel G.</h3>
+                            <small class="text-orange">Toyota Tacoma TRD</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 50 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Great workshop experience. They diagnosed a tricky turbo boost leak quickly and replaced the hose. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Cooper M.</h3>
+                            <small class="text-orange">Ford F-150 EcoBoost</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 51 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Solid advice on diesel maintenance. They really know their Cummins and Powerstroke engines inside out. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Easton W.</h3>
+                            <small class="text-orange">Ram 2500</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 52 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Impeccable service from start to finish. Replaced my entire exhaust system with stainless steel pipes. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Cameron S.</h3>
+                            <small class="text-orange">GMC Sierra Denali</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 53 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Dependable and trusted neighborhood mechanics. Always explain what needs attention now versus later. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Carson L.</h3>
+                            <small class="text-orange">Ford Super Duty</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 54 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« High-quality parts department. They tracked down a hard-to-find alternator bracket for my older Chevy truck. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Jeremiah D.</h3>
+                            <small class="text-orange">Chevrolet Silverado HD</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 55 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Professional battery swap and electrical system check. Quick, clean, and reasonably priced. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Parker N.</h3>
+                            <small class="text-orange">Toyota Tundra Limited</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 56 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Swapped out my worn-out steering stabilizer. Huge improvement in handling on the highway. Thanks! »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Robert P.</h3>
+                            <small class="text-orange">Ram 1500 Classic</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 57 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Outstanding service on dual rear wheels and axle maintenance. Hard to find shops this skilled for heavy trucks. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Eli K.</h3>
+                            <small class="text-orange">Ford F-350 Dually</small>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 58 -->
+                <div class="col-md-4">
+                    <div class="review-card p-4 rounded-4 h-100 d-flex flex-column justify-content-between">
+                        <div>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-gold"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                                <small class="text-gray">2 years ago</small>
+                            </div>
+                            <p class="text-light opacity-75 mb-4">« Great overall experience. Friendly technicians, transparent billing, and top quality replacement parts. »</p>
+                        </div>
+                        <div>
+                            <h3 class="h6 fw-bold mb-0 text-white">Adrian T.</h3>
+                            <small class="text-orange">Nissan Frontier</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Pagination Simulation -->
+            <nav class="mt-5" aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled"><span class="page-link bg-dark text-secondary border-secondary">Previous</span></li>
+                    <li class="page-item active"><span class="page-link bg-orange border-orange text-white">1</span></li>
+                    <li class="page-item"><a class="page-link bg-dark text-light border-secondary" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-light border-secondary" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-light border-secondary" href="#">...</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-light border-secondary" href="#">13</a></li>
+                    <li class="page-item"><a class="page-link bg-dark text-light border-secondary" href="#">Next</a></li>
+                </ul>
+            </nav>
+        </div>
+    </section>
+
+    <!-- 5. FOOTER -->
+    <footer class="py-5 border-top border-secondary" style="background-color: var(--bg-dark);">
+        <div class="container border-bottom border-secondary pb-4 mb-4">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="IMG-20260907-WA0017_2.jpeg" alt="Tim Truck Parts and Repairs Logo" style="max-height: 50px; border-radius: 4px;" class="mb-3">
+                    <p class="text-gray mb-4 pe-lg-4">
+                        Pickup specialists since 2015. Entrust your vehicle to an expert team that understands the demands of heavy-duty utility vehicles.
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#" class="btn btn-nav-circle bg-gray text-white"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-nav-circle bg-gray text-white"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="text-white fw-bold mb-4">Quick Links</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                        <li><a href="index.html" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Home</a></li>
+                        <li><a href="service.html" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"> Services</a></li>
+                        <li><a href="review.html" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Customer Reviews</a></li>
+                        <li><a href="contact.html" class="text-decoration-none footer-link"><i class="fa-solid fa-angle-right text-orange me-2"></i> Contact & Location</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4">
+                    <h5 class="text-white fw-bold mb-4">Contact Info</h5>
+                    <ul class="list-unstyled text-gray mb-0">
+                        <li class="mb-3"><i class="fa-solid fa-location-dot text-gold me-2"></i> 105 Warehouse Rd, Oak Ridge, TN 37830</li>
+                        <li class="mb-3"><i class="fa-solid fa-phone text-gold me-2"></i> <a href="tel:(865) 685-5944" style="color: white; text-decoration: none;">(865) 685-5944</a></li>
+                        <li class="mb-3 d-flex gap-2">
+                            <i class="fa-solid fa-envelope text-gold mt-1"></i> <a href="mailto:Timtruckpartsandrepairs@gmail.com" style="color: white; text-decoration: none">Timtruckpartsandrepairs@gmail.com</a>
+                        </li>
+                        <li><i class="fa-solid fa-clock text-gold me-2"></i> EST. 2015</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="container text-center text-gray small">
+            <p class="mb-0">&copy; 2015-2026 Tim Truck Parts and Repairs. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
